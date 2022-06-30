@@ -1,38 +1,117 @@
-.App {
+body {}
+
+.topbox {
+  background-color: rgb(50, 165, 227);
+  height: 50px;
+  border-color: black;
+  border-style: solid;
+  text-align: start;
+}
+
+.author {}
+
+.book {}
+
+.bookinstance {}
+
+.genre {}
+
+.appnav {
+
+  margin-bottom: 1cm;
+  margin-top: 0cm;
+  text-align: center;
+  height: auto;
+
+  background-color: rgb(226, 225, 225)
+}
+
+.heading {
+  margin-right: 55%;
+  padding-top: 20px;
+  color: black;
+  background-color: rgb(200, 227, 251);
+}
+
+.home {
+  text-align: left;
+
+}
+
+.link0 {
+  padding: 0px 40px;
+  text-align: justify;
+  color: rgb(0, 0, 0);
+}
+
+.link1 {
+  padding: 0px 40px;
+  text-align: center;
+  color: black;
+}
+
+.link2 {
+  padding: 0px 40px;
+  text-align: center;
+  color: black;
+}
+
+.link3 {
+  padding: 0px 40px;
+  text-align: center;
+  color: black;
+}
+
+.link4 {
+  padding: 0px 40px;
+  text-align: center;
+  color: black;
+}
+
+/* .table table-striped {
+  border-color: black;
+  border-style: solid;
+  border-width: ;
+  border-bottom: 5px;
+  background-color: rgb(189, 219, 209);
+
+
+
+} */
+
+.homeclass {
+  color: aliceblue;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.photo {
+  width: 100vw;
+  height: 35vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.backbutton {
+
+  background-color: rgb(78, 196, 239);
+  color: whitesmoke;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card {
+  text-align: center;
+  color: rgb(6, 6, 7);
+  width: 15cm;
+  height: 10cm;
+  padding: 1cm 0.3cm;
+  border-style: solid;
+  border-color: cornflowerblue;
+  border-radius: 5px 5px;
+  margin: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.labelcontrol {
+  padding: 10px 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.authorbt {
+  background-color: black;
+  color: ivory;
 }
