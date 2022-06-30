@@ -22,20 +22,20 @@ function Authorcreateform() {
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label className='labelcontrol'>First name</label>
-                        <input type="text" name='first_name' value={addauthor.first_name} onChange={oninputchange} className='inputcontrol' placeholder='first name of the author' required /><br /><br />
+                        <input type="text" name='first_name' onChange={oninputchange} className='inputcontrol' placeholder='first name of the author' required /><br /><br />
 
                         <label className='labelcontrol'>Family name</label>
 
-                        <input type='text' name='family_name' value={addauthor.family_name} onChange={oninputchange} className='inputcontrol' placeholder='family name of the author' required /><br /><br />
+                        <input type='text' name='family_name' onChange={oninputchange} className='inputcontrol' placeholder='family name of the author' required /><br /><br />
 
                         <label className='labelcontrol'>date of birth</label>
 
-                        <input type="date" name='date_of_birth' value={addauthor.date_of_birth} onChange={oninputchange} className='inputcontrol' placeholder='date of birth of the author' required /><br /><br />
+                        <input type="date" name='date_of_birth' onChange={oninputchange} className='inputcontrol' placeholder='date of birth of the author' required /><br /><br />
 
 
                         <label className='labelcontrol'>date of death</label>
 
-                        <input type='date' name='date_of_death' value={addauthor.date_of_death} onChange={oninputchange} className='inputcontrol' placeholder='date of death of the author' /><br /><br />
+                        <input type='date' name='date_of_death' onChange={oninputchange} className='inputcontrol' placeholder='date of death of the author' /><br /><br />
 
                     </div>
                     <input type='submit' className='formsubmit' value='ADD NEW AUTHOR' />

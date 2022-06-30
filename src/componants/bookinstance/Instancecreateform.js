@@ -22,20 +22,20 @@ function Instancecreateform() {
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label className='labelcontrol'>BOOK</label>
-                        <input type="text" name='book' value={addinstance.book} onChange={oninputchange} className='inputcontrol' placeholder='first name of the book' required /><br /><br />
+                        <input type="text" name='book' onChange={oninputchange} className='inputcontrol' placeholder='first name of the book' required /><br /><br />
 
                         <label className='labelcontrol'>IMPRINT</label>
 
-                        <input type='text' name='imprint' value={addinstance.imprint} onChange={oninputchange} className='inputcontrol' placeholder='imprint name of the book' required /><br /><br />
+                        <input type='text' name='imprint' onChange={oninputchange} className='inputcontrol' placeholder='imprint name of the book' required /><br /><br />
 
                         <label className='labelcontrol'>STATUS</label>
 
-                        <input type="text" name='status' value={addinstance.status} onChange={oninputchange} className='inputcontrol' placeholder='status of the book' required /><br /><br />
+                        <input type="text" name='status' onChange={oninputchange} className='inputcontrol' placeholder='status of the book' required /><br /><br />
 
 
                         <label className='labelcontrol'>DUEBACK</label>
 
-                        <input type='text' name='dueback' value={addinstance.due_back} onChange={oninputchange} className='inputcontrol' placeholder='dueback number of the book' /><br /><br />
+                        <input type='text' name='dueback' onChange={oninputchange} className='inputcontrol' placeholder='dueback number of the book' /><br /><br />
 
                     </div>
                     <input type='submit' className='formsubmit' value='ADD NEW BOOKINSTANCE' />

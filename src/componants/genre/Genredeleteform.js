@@ -18,7 +18,7 @@ function Genredeleteform() {
         <div className='card'>
             <h3>GENRE DELETE FORM</h3>
             <form onSubmit={onSubmit}>
-                <input type='text' name='_id' value={genredelete._id} onChange={oninputform} className='inputcontrol' placeholder='_id of the genre you want to delete' required /><br /><br />
+                <input type='text' name='_id' onChange={oninputform} className='inputcontrol' placeholder='_id of the genre you want to delete' required /><br /><br />
                 <input type='submit' className='formsubmit' value='DELETE' />
             </form>
         </div>

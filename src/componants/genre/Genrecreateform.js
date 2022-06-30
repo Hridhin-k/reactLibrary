@@ -21,7 +21,7 @@ function Genrecreateform() {
                 <form onSubmit={onSubmit} className="form-horizontal">
                     <div className="form-group">
                         <label className='labelcontrol'>ADD GENRE</label>
-                        <input type="text" name='name' value={addgenre.name} onChange={oninputchange} className='inputcontrol' placeholder='eg: fantasy,action' required /><br /><br />
+                        <input type="text" name='name' onChange={oninputchange} className='inputcontrol' placeholder='eg: fantasy,action' required /><br /><br />
 
 
                     </div>

@@ -45,6 +45,8 @@ function Genre() {
                             <tr key={item._id}>
                                 <td>{item._id}</td>
                                 <td>{item.name}</td>
+                                <td><button className='genreupdate' onClick={() => { setsgef(true) }}>UPDATE GENRE</button></td>
+                                <td><button className='genredelete' onClick={() => { setsgdf(true) }}>DELETE GENRE</button></td>
                             </tr>)
                     })}
 
@@ -54,8 +56,8 @@ function Genre() {
                 </tbody>
             </table><br />
             <button className='genrecreate' onClick={() => { setsgcf(true) }}>ADD NEW GENRE</button>
-            <button className='genreupdate' onClick={() => { setsgef(true) }}>UPDATE GENRE</button>
-            <button className='genredelete' onClick={() => { setsgdf(true) }}>DELETE GENRE</button><br /><br />
+
+
 
             <button className='authorcreate' onClick={() => { setsgcf(false); setsgef(false); setsgdf(false) }}>close</button>
 

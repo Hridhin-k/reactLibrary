@@ -20,7 +20,7 @@ function Authordeleteform() {
         <div className='card'>
             <h3>AUTHOR DELETE FORM</h3>
             <form onSubmit={onSubmit}>
-                <input type='text' name='_id' value={authordelete._id} onChange={oninputform} className='inputcontrol' placeholder='_id of the author you want to delete' required /><br /><br />
+                <input type='text' name='_id' onChange={oninputform} className='inputcontrol' placeholder='_id of the author you want to delete' required /><br /><br />
                 <input type='submit' className='formsubmit' value='DELETE AUTHOR' />
             </form>
         </div>

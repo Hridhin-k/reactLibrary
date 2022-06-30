@@ -51,7 +51,8 @@ function Book() {
                                 <td>{item.summary}</td>
                                 <td>{item.isbn}</td>
                                 <td>{item.genre}</td>
-
+                                <td> <button className='bookupdate' onClick={() => { setsbef(true) }} >UPDATE </button></td>
+                                <td>  <button className='bookdelete' onClick={() => { setsbdf(true) }}>DELETE </button></td>
 
                             </tr>)
                     })}
@@ -62,8 +63,8 @@ function Book() {
                 </tbody>
             </table><br />
             <button className='bookcreate' onClick={() => { setsbcf(true) }}>ADD NEW BOOK</button>
-            <button className='bookupdate' onClick={() => { setsbef(true) }} >UPDATE BOOK</button>
-            <button className='bookdelete' onClick={() => { setsbdf(true) }}>DELETE BOOK</button>
+
+
             <button className='authorcreate' onClick={() => { setsbcf(false); setsbef(false); setsbdf(false) }}>close</button>
             {sbcf && <Bookcreateform />}<br />
             {sbef && <Bookeditform />}<br />

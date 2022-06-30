@@ -65,8 +65,7 @@ function Author() {
 
             <button className='authorbt' onClick={() => { setsacf(true) }}>ADD NEW AUTHOR</button>
 
-            {/* <button className='authorupdate' onClick={() => { setsaef(true) }} >UPDATE AUTHOR</button>
-            <button className='authordelete' onClick={() => { setsadf(true) }}>DELETE AUTHOR</button><br /><br /> */}
+
 
 
             <button className='authorbt' onClick={() => { setsacf(false); setsaef(false); setsadf(false) }}>close</button>

@@ -52,7 +52,8 @@ function Bookinstance() {
                                 <td>{item.status}</td>
 
                                 <td>{item.due_back}</td>
-
+                                <td>  <button className='bookinstanceupdate' onClick={() => { setsief(true) }}>UPDATE</button></td>
+                                <td>    <button className='bookinstancedelete' onClick={() => { setsidf(true) }}>DELETE</button></td>
                             </tr>)
                     })}
 
@@ -62,8 +63,8 @@ function Bookinstance() {
                 </tbody>
             </table><br />
             <button className='bookinstancecreate' onClick={() => { setsicf(true) }}>ADD NEW BOOKINSTANCE</button>
-            <button className='bookinstanceupdate' onClick={() => { setsief(true) }}>UPDATE BOOKINSTANCE</button>
-            <button className='bookinstancedelete' onClick={() => { setsidf(true) }}>DELETE BOOKINSTANCE</button><br /><br />
+
+
             <button className='authorcreate' onClick={() => { setsicf(false); setsief(false); setsidf(false) }}>close</button>
 
             {sicf && <Instancecreateform />}<br />

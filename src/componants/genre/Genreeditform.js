@@ -22,10 +22,10 @@ function Genreeditform() {
                     <div className="form-group">
 
                         <label className='labelcontrol'> GENRE ID - </label>
-                        <input type="text" name='_id' value={addgenre._id} onChange={oninputchange} className='inputcontrol' placeholder='genre id you want to delete' required /><br /><br />
+                        <input type="text" name='_id' onChange={oninputchange} className='inputcontrol' placeholder='genre id you want to delete' required /><br /><br />
 
                         <label className='labelcontrol'>ADD GENRE - </label>
-                        <input type="text" name='name' value={addgenre.name} onChange={oninputchange} className='inputcontrol' placeholder='eg: fantasy,action' required /><br /><br />
+                        <input type="text" name='name' onChange={oninputchange} className='inputcontrol' placeholder='eg: fantasy,action' required /><br /><br />
 
 
                     </div>

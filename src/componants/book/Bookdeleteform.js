@@ -21,7 +21,7 @@ function Bookdeleteform() {
             <h3>BOOK DELETE FORM</h3>
             <form onSubmit={onSubmit}>
                 <label className='labelcontrol'>DELETE </label>
-                <input type='text' name='_id' value={bookdelete._id} onChange={oninputform} className='inputcontrol' placeholder='_id of the book you want to delete' required /><br /><br />
+                <input type='text' name='_id' onChange={oninputform} className='inputcontrol' placeholder='_id of the book you want to delete' required /><br /><br />
                 <input type='submit' className='formsubmit' value='DELETE' />
             </form>
         </div>

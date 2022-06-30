@@ -5,6 +5,7 @@ function Instanceeditform() {
 
     const oninputchange = (e) => {
         const { name, value } = e.target
+
         setaddinstance(prevInput => { return { ...addinstance, [name]: value } })
     }
     const onSubmit = async (e) => {
@@ -23,23 +24,23 @@ function Instanceeditform() {
 
 
                         <label className='labelcontrol'>_ID</label>
-                        <input type="text" name='_id' value={addinstance._id} onChange={oninputchange} className='inputcontrol' placeholder='id of the bookinstance' required /><br /><br />
+                        <input type="text" name='_id' onChange={oninputchange} className='inputcontrol' placeholder='id of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>BOOK</label>
-                        <input type="text" name='book' value={addinstance.book} onChange={oninputchange} className='inputcontrol' placeholder='id  of the bookinstance' required /><br /><br />
+                        <input type="text" name='book' onChange={oninputchange} className='inputcontrol' placeholder='id  of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>IMPRINT</label>
 
-                        <input type='text' name='imprint' value={addinstance.imprint} onChange={oninputchange} className='inputcontrol' placeholder='imprint of the bookinstance' required /><br /><br />
+                        <input type='text' name='imprint' onChange={oninputchange} className='inputcontrol' placeholder='imprint of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>STATUS</label>
 
-                        <input type="text" name='status' value={addinstance.status} onChange={oninputchange} className='inputcontrol' placeholder='status of the bookinstance' required /><br /><br />
+                        <input type="text" name='status' onChange={oninputchange} className='inputcontrol' placeholder='status of the bookinstance' required /><br /><br />
 
 
                         <label className='labelcontrol'>DUEBACK</label>
 
-                        <input type='date' name='dueback' value={addinstance.due_back} onChange={oninputchange} className='inputcontrol' placeholder='dueback date of the bookinstance' /><br /><br />
+                        <input type='date' name='due_back' onChange={oninputchange} className='inputcontrol' placeholder='dueback date of the bookinstance' /><br /><br />
 
 
 
