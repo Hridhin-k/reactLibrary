@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/reactlib/static/css/main.67218378.css",
-    "main.js": "/reactlib/static/js/main.f57a136a.js",
+    "main.js": "/reactlib/static/js/main.a449511f.js",
+    "static/media/reactlib2.jpg": "/reactlib/static/media/reactlib2.86c9a701750c0001d7bf.jpg",
     "index.html": "/reactlib/index.html",
     "main.67218378.css.map": "/reactlib/static/css/main.67218378.css.map",
-    "main.f57a136a.js.map": "/reactlib/static/js/main.f57a136a.js.map"
+    "main.a449511f.js.map": "/reactlib/static/js/main.a449511f.js.map"
   },
   "entrypoints": [
     "static/css/main.67218378.css",
-    "static/js/main.f57a136a.js"
+    "static/js/main.a449511f.js"
   ]
 }
