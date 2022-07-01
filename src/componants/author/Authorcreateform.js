@@ -10,7 +10,7 @@ function Authorcreateform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:7070/catalog/author/create/submit', addauthor)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/author/create/submit', addauthor)
         alert('data inserted')
         console.log(addauthor)
         setaddauthor({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })

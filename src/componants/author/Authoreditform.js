@@ -9,7 +9,7 @@ function Authoreditform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:7070/catalog/author/update/submit', addauthor)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/author/update/submit', addauthor)
         alert('DATA INSERTED SUCCESSFULLY')
         console.log(addauthor)
         setaddauthor({ _id: '', first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })

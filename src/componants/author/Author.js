@@ -14,7 +14,7 @@ function Author() {
     function getauthor() {
 
 
-        axios.get('http://localhost:7070/catalog/authors').then(res => {
+        axios.get('https://restapimongoose.herokuapp.com/catalog/authors').then(res => {
 
             const myauthor = res.data;
             setauthor(myauthor)

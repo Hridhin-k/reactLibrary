@@ -9,7 +9,7 @@ function Genrecreateform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:7070/catalog/genre/create/submit', addgenre)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/genre/create/submit', addgenre)
         alert('data inserted')
         console.log(addgenre)
         setaddgenre({ name: '' })

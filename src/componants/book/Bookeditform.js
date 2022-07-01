@@ -9,7 +9,7 @@ function Bookeditform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:7070/catalog/book/update/submit', addbook)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/book/update/submit', addbook)
         alert('DATA INSERTED SUCCESSFULLY')
         console.log(addbook)
         setaddbook({ _id: '', title: '', author: '', summary: '', isbn: '', genre: '' })

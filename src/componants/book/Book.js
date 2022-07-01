@@ -13,7 +13,7 @@ function Book() {
     function getbook() {
 
 
-        axios.get('http://localhost:7070/catalog/books').then(res => {
+        axios.get('https://restapimongoose.herokuapp.com/catalog/books').then(res => {
             console.log(res)
             const mybook = res.data;
             setbook(mybook)

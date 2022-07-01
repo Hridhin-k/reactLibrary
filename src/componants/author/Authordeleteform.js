@@ -11,7 +11,7 @@ function Authordeleteform() {
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        await axios.post('http://localhost:7070/catalog/author/delete/submit', authordelete)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/author/delete/submit', authordelete)
         setauthordelete({ _id: '' })
         console.log(authordelete)
         alert('author deleted')

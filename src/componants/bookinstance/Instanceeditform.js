@@ -10,7 +10,7 @@ function Instanceeditform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:7070/catalog/bookinstance/update/submit', addinstance)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/bookinstance/update/submit', addinstance)
         alert('data updated')
         console.log(addinstance)
         setaddinstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })

@@ -10,7 +10,7 @@ function Instancedeleteform() {
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        await axios.post('http://localhost:7070/catalog/bookinstance/delete/submit', instancedelete)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/bookinstance/delete/submit', instancedelete)
         setinstancedelete({ _id: '' })
         console.log(instancedelete)
         alert('instance deleted')

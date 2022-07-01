@@ -13,7 +13,7 @@ function Genre() {
     function getgenre() {
 
 
-        axios.get('http://localhost:7070/catalog/genres').then(res => {
+        axios.get('https://restapimongoose.herokuapp.com/catalog/genres').then(res => {
             console.log(res.data)
             const mygenre = res.data;
             setgenre(mygenre)

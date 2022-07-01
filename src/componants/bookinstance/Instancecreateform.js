@@ -10,7 +10,7 @@ function Instancecreateform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:7070/catalog/bookinstance/create/submit', addinstance)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/bookinstance/create/submit', addinstance)
         alert('data inserted')
         console.log(addinstance)
         setaddinstance({ book: '', imprint: '', status: '', due_back: '' })

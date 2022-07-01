@@ -13,7 +13,7 @@ function Bookinstance() {
     function getbookinstance() {
 
 
-        axios.get('http://localhost:7070/catalog/bookinstances').then(res => {
+        axios.get('https://restapimongoose.herokuapp.com/catalog/bookinstances').then(res => {
             console.log(res.data)
             const myinstance = res.data;
             setinstance(myinstance)

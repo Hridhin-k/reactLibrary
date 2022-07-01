@@ -10,7 +10,7 @@ function Bookdeleteform() {
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        await axios.post('http://localhost:7070/catalog/book/delete/submit', bookdelete)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/book/delete/submit', bookdelete)
         setbookdelete({ _id: '' })
         console.log(bookdelete)
         alert('book deleted')

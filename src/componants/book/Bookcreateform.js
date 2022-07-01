@@ -9,7 +9,7 @@ function Bookcreateform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:7070/catalog/book/create/submit', addbook)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/book/create/submit', addbook)
         alert('data inserted')
         console.log(addbook)
         setaddbook({ title: '', author: '', summary: '', isbn: '', genre: '' })

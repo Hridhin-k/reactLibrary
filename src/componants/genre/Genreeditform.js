@@ -9,7 +9,7 @@ function Genreeditform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:7070/catalog/genre/update/submit', addgenre)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/genre/update/submit', addgenre)
         alert('DATA UPDATED SUCCESSFULLY')
         console.log(addgenre)
         setaddgenre({ _id: '', name: '' })

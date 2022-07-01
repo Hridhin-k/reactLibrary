@@ -9,7 +9,7 @@ function Genredeleteform() {
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        await axios.post('http://localhost:7070/catalog/genre/delete/submit', genredelete)
+        await axios.post('https://restapimongoose.herokuapp.com/catalog/genre/delete/submit', genredelete)
         setgenredelete({ _id: '' })
         console.log(genredelete)
         alert('genre deleted')
