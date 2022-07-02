@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import axios from 'axios'
-function Bookcreateform() {
-    const [addbook, setaddbook] = useState({ title: '', author: '', summary: '', isbn: '', genre: '' })
+import { createBook } from '../../api/book'
+function BookCreateForm() {
+    const [addBook, setAddBook] = useState({ title: '', author: '', summary: '', isbn: '', genre: '' })
 
-    const oninputchange = (e) => {
+    const onInputChange = (e) => {
         const { name, value } = e.target
-        setaddbook(prevInput => { return { ...addbook, [name]: value } })
+        setAddBook(prevInput => { return { ...addBook, [name]: value } })
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('https://restapimongoose.herokuapp.com/catalog/book/create/submit', addbook)
+        await createBook(addBook)
         alert('data inserted')
-        console.log(addbook)
-        setaddbook({ title: '', author: '', summary: '', isbn: '', genre: '' })
+        console.log(addBook)
+        setAddBook({ title: '', author: '', summary: '', isbn: '', genre: '' })
     }
     return (
         <>
@@ -21,24 +21,24 @@ function Bookcreateform() {
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label className='labelcontrol'>TITLE </label>
-                        <input type="text" name='title' onChange={oninputchange} className='inputcontrol' placeholder='first name of the book' required /><br /><br />
+                        <input type="text" name='title' onChange={onInputChange} className='inputcontrol' placeholder='first name of the book' required /><br /><br />
 
                         <label className='labelcontrol'>AUTHOR </label>
 
-                        <input type='text' name='author' onChange={oninputchange} className='inputcontrol' placeholder='author name of the book' required /><br /><br />
+                        <input type='text' name='author' onChange={onInputChange} className='inputcontrol' placeholder='author name of the book' required /><br /><br />
 
                         <label className='labelcontrol'>SUMMARY </label>
 
-                        <input type="text" name='summary' onChange={oninputchange} className='inputcontrol' placeholder='summary of the book' required /><br /><br />
+                        <input type="text" name='summary' onChange={onInputChange} className='inputcontrol' placeholder='summary of the book' required /><br /><br />
 
 
                         <label className='labelcontrol'>ISBN </label>
 
-                        <input type='text' name='isbn' onChange={oninputchange} className='inputcontrol' placeholder='isbn number of the book' /><br /><br />
+                        <input type='text' name='isbn' onChange={onInputChange} className='inputcontrol' placeholder='isbn number of the book' /><br /><br />
 
                         <label className='labelcontrol'>GENRE </label>
 
-                        <input type='text' name='genre' onChange={oninputchange} className='inputcontrol' placeholder='date of death of the book' /><br /><br />
+                        <input type='text' name='genre' onChange={onInputChange} className='inputcontrol' placeholder='date of death of the book' /><br /><br />
 
                     </div>
                     <input type='submit' className='formsubmit' value='ADD NEW BOOK' />
@@ -51,4 +51,4 @@ function Bookcreateform() {
     )
 }
 
-export default Bookcreateform
+export default BookCreateForm

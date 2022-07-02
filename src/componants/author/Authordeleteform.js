@@ -1,30 +1,36 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { deleteAuthor } from '../../api/author';
 
-function Authordeleteform() {
-    const [authordelete, setauthordelete] = useState({ _id: '' })
+function AuthorDeleteForm({ id }) {
+    console.log('hello', id)
+    const [authorDelete, setAuthorDelete] = useState({ _id: id })
 
-    function oninputform(e) {
+    function onInputForm(e) {
         const { name, value } = e.target;
-        setauthordelete(preInput => { return ({ ...authordelete, [name]: value }) })
+        setAuthorDelete(preInput => { return ({ ...authorDelete, [name]: value }) })
     }
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        await axios.post('https://restapimongoose.herokuapp.com/catalog/author/delete/submit', authordelete)
-        setauthordelete({ _id: '' })
-        console.log(authordelete)
+        const resp = await deleteAuthor(authorDelete)
+        console.log('DELETED RESPONSE ', resp)
+        setAuthorDelete({ _id: '' })
+
+        console.log(authorDelete)
         alert('author deleted')
+        console.log('new')
     }
+    console.log(id)
     return (
         <div className='card'>
             <h3>AUTHOR DELETE FORM</h3>
             <form onSubmit={onSubmit}>
-                <input type='text' name='_id' onChange={oninputform} className='inputcontrol' placeholder='_id of the author you want to delete' required /><br /><br />
+                <input type='text' name='_id' value={authorDelete._id} onChange={onInputForm} className='inputcontrol' placeholder='_id of the author you want to delete' required /><br /><br />
                 <input type='submit' className='formsubmit' value='DELETE AUTHOR' />
             </form>
         </div>
     )
 }
 
-export default Authordeleteform
+export default AuthorDeleteForm

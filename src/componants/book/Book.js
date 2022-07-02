@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Bookcreateform from './Bookcreateform';
-import Bookdeleteform from './Bookdeleteform';
-import Bookeditform from './Bookeditform';
+import BookCreateForm from './BookCreateForm';
+import BookDeleteForm from './BookDeleteForm';
+import BookEditForm from './BookEditForm';
+import { getBooks } from '../../api/book';
 function Book() {
-    const [book, setbook] = useState([])
-    const [sbcf, setsbcf] = useState(false);
-    const [sbdf, setsbdf] = useState(false);
-    const [sbef, setsbef] = useState(false);
+    const [book, setBook] = useState([])
+    const [sbcf, setSbcf] = useState(false);
+    const [sbdf, setSbdf] = useState(false);
+    const [sbef, setSbef] = useState(false);
     const navigate = useNavigate();
-    function getbook() {
+    function getBook() {
 
 
-        axios.get('https://restapimongoose.herokuapp.com/catalog/books').then(res => {
+        getBooks('/books').then(res => {
             console.log(res)
-            const mybook = res.data;
-            setbook(mybook)
+            const myBook = res.data;
+            setBook(myBook)
 
         })
             .catch((error) => {
@@ -26,7 +27,7 @@ function Book() {
 
     return (
         <div className="book">
-            <button className='button2' onClick={getbook}>show all books</button>
+            <button className='button2' onClick={getBook}>show all books</button>
             <button className='backbutton' onClick={() => { navigate(-1) }} >back</button>
             <table className="table table-striped">
                 <thead>
@@ -51,8 +52,8 @@ function Book() {
                                 <td>{item.summary}</td>
                                 <td>{item.isbn}</td>
                                 <td>{item.genre}</td>
-                                <td> <button className='bookupdate' onClick={() => { setsbef(true) }} >UPDATE </button></td>
-                                <td>  <button className='bookdelete' onClick={() => { setsbdf(true) }}>DELETE </button></td>
+                                <td> <button className='bookupdate' onClick={() => { setSbef(true) }} >UPDATE </button></td>
+                                <td>  <button className='bookdelete' onClick={() => { setSbdf(true) }}>DELETE </button></td>
 
                             </tr>)
                     })}
@@ -62,13 +63,13 @@ function Book() {
 
                 </tbody>
             </table><br />
-            <button className='bookcreate' onClick={() => { setsbcf(true) }}>ADD NEW BOOK</button>
+            <button className='bookcreate' onClick={() => { setSbcf(true) }}>ADD NEW BOOK</button>
 
 
-            <button className='authorcreate' onClick={() => { setsbcf(false); setsbef(false); setsbdf(false) }}>close</button>
-            {sbcf && <Bookcreateform />}<br />
-            {sbef && <Bookeditform />}<br />
-            {sbdf && <Bookdeleteform />}<br />
+            <button className='authorcreate' onClick={() => { setSbcf(false); setSbef(false); setSbdf(false) }}>close</button>
+            {sbcf && <BookCreateForm />}<br />
+            {sbef && <BookEditForm />}<br />
+            {sbdf && <BookDeleteForm />}<br />
 
         </div>
     )

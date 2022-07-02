@@ -1,32 +1,36 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Authorcreateform from './Authorcreateform'
-import Authordeleteform from './Authordeleteform'
-import Authoreditform from './Authoreditform'
+import AuthorCreateForm from './AuthorCreateForm.js'
+import AuthorDeleteForm from './AuthorDeleteForm'
+import AuthorEditForm from './AuthorEditForm'
+import { getAuthors } from '../../api/author.js'
 
 function Author() {
-    const [author, setauthor] = useState([])
-    const [sacf, setsacf] = useState(false);
-    const [sadf, setsadf] = useState(false);
-    const [saef, setsaef] = useState(false);
+    const [author, setAuthor] = useState([])
+    const [sacf, setSacf] = useState(false);
+    const [sadf, setSadf] = useState(false);
+    const [saef, setSaef] = useState(false);
+    const [id, setId] = useState('');
     const navigate = useNavigate();
-    function getauthor() {
 
+    function getAuthor() {
+        // const { REACT_APP_LOCAL_URL } = process.env;
 
-        axios.get('https://restapimongoose.herokuapp.com/catalog/authors').then(res => {
+        getAuthors('/authors').then(res => {
 
-            const myauthor = res.data;
-            setauthor(myauthor)
+            const myAuthor = res.data;
+            setAuthor(myAuthor)
         })
             .catch((error) => {
                 console.log(error)
             })
 
     }
+    // console.log('hi', id)
     return (
         <div className='author'>
-            <button className='button1' onClick={getauthor}>show authors</button>
+            <button className='button1' onClick={getAuthor}>show authors</button>
             <button className='backbutton' onClick={() => navigate(-1)}>Back</button>
 
             <table className="table table-striped">
@@ -41,6 +45,7 @@ function Author() {
                 </thead>
                 <tbody>
                     {author.map((item) => {
+
                         return (
 
                             <tr key={item._id}>
@@ -51,9 +56,16 @@ function Author() {
                                 <td>{item.date_of_birth}</td>
 
                                 <td>{item.date_of_death}</td>
-                                <td>  <button className='authorbt' onClick={() => { setsaef(true) }} >UPDATE </button></td>
-                                <td>  <button className='authorbt' onClick={() => { setsadf(true) }}>DELETE </button></td>
+                                <td>  <button className='authorbt' onClick={() => { setSaef(true) }} >UPDATE </button></td>
+                                <td>  <button className='authorbt' onClick={() => { setSadf(true); setId(item._id); console.log(id) }}>DELETE </button></td>
+
                             </tr>)
+
+
+
+
+
+
                     })}
 
 
@@ -63,24 +75,23 @@ function Author() {
             </table><br />
 
 
-            <button className='authorbt' onClick={() => { setsacf(true) }}>ADD NEW AUTHOR</button>
+            <button className='authorbt' onClick={() => { setSacf(true) }}>ADD NEW AUTHOR</button>
 
 
 
 
-            <button className='authorbt' onClick={() => { setsacf(false); setsaef(false); setsadf(false) }}>close</button>
+            <button className='authorbt' onClick={() => { setSacf(false); setSaef(false); setSadf(false) }}>close</button>
 
 
 
 
-            {sacf && <Authorcreateform />}
+            {sacf && <AuthorCreateForm />}
 
-            {saef && <Authoreditform />}
-            {sadf && <Authordeleteform />}
+            {saef && <AuthorEditForm />}
+            {sadf && <AuthorDeleteForm id={id} />}
         </div >
 
     )
 }
 
 export default Author
-//{ setsacf(false); setsaef(false); setsadf(false) }

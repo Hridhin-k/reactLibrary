@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-function Instanceeditform() {
-    const [addinstance, setaddinstance] = useState({ _id: '', book: '', imprint: '', status: '', due_back: '' })
+import { updateInstance } from '../../api/bookInstance'
+function InstanceEditForm() {
+    const [addInstance, setAddInstance] = useState({ _id: '', book: '', imprint: '', status: '', due_back: '' })
 
-    const oninputchange = (e) => {
+    const onInputChange = (e) => {
         const { name, value } = e.target
 
-        setaddinstance(prevInput => { return { ...addinstance, [name]: value } })
+        setAddInstance(prevInput => { return { ...addInstance, [name]: value } })
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('https://restapimongoose.herokuapp.com/catalog/bookinstance/update/submit', addinstance)
+        await updateInstance(addInstance)
         alert('data updated')
-        console.log(addinstance)
-        setaddinstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })
+        console.log(addInstance)
+        setAddInstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })
     }
     return (
         <>
@@ -24,23 +25,24 @@ function Instanceeditform() {
 
 
                         <label className='labelcontrol'>_ID</label>
-                        <input type="text" name='_id' onChange={oninputchange} className='inputcontrol' placeholder='id of the bookinstance' required /><br /><br />
+                        <input type="text" name='_id' onChange={onInputChange} className='inputcontrol'
+                            placeholder='id of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>BOOK</label>
-                        <input type="text" name='book' onChange={oninputchange} className='inputcontrol' placeholder='id  of the bookinstance' required /><br /><br />
+                        <input type="text" name='book' onChange={onInputChange} className='inputcontrol' placeholder='id  of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>IMPRINT</label>
 
-                        <input type='text' name='imprint' onChange={oninputchange} className='inputcontrol' placeholder='imprint of the bookinstance' required /><br /><br />
+                        <input type='text' name='imprint' onChange={onInputChange} className='inputcontrol' placeholder='imprint of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>STATUS</label>
 
-                        <input type="text" name='status' onChange={oninputchange} className='inputcontrol' placeholder='status of the bookinstance' required /><br /><br />
+                        <input type="text" name='status' onChange={onInputChange} className='inputcontrol' placeholder='status of the bookinstance' required /><br /><br />
 
 
                         <label className='labelcontrol'>DUEBACK</label>
 
-                        <input type='date' name='due_back' onChange={oninputchange} className='inputcontrol' placeholder='dueback date of the bookinstance' /><br /><br />
+                        <input type='date' name='due_back' onChange={onInputChange} className='inputcontrol' placeholder='dueback date of the bookinstance' /><br /><br />
 
 
 
@@ -55,4 +57,4 @@ function Instanceeditform() {
     )
 }
 
-export default Instanceeditform
+export default InstanceEditForm

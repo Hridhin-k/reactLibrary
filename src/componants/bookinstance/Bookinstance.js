@@ -1,34 +1,31 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+
 import { useNavigate } from 'react-router-dom'
-import Instancedeleteform from './Instancedeleteform';
-import Instancecreateform from './Instancecreateform';
-import Instanceeditform from './Instanceeditform';
-function Bookinstance() {
-    const [instance, setinstance] = useState([])
-    const [sicf, setsicf] = useState(false);
-    const [sidf, setsidf] = useState(false);
-    const [sief, setsief] = useState(false);
+import InstanceCreateForm from './InstanceCreateForm';
+import InstanceDeleteForm from './InstanceDeleteForm';
+import InstanceEditForm from './InstanceEditForm';
+import { getInstances } from '../../api/bookInstance';
+import axios from 'axios';
+function BookInstance() {
+    const [instance, setInstance] = useState([])
+    const [sicf, setSicf] = useState(false);
+    const [sidf, setSidf] = useState(false);
+    const [sief, setSief] = useState(false);
     const navigate = useNavigate();
-    function getbookinstance() {
-
-
+    function getBookInstance() {
         axios.get('https://restapimongoose.herokuapp.com/catalog/bookinstances').then(res => {
             console.log(res.data)
-            const myinstance = res.data;
-            setinstance(myinstance)
+            const myInstance = res.data;
+            setInstance(myInstance)
         })
             .catch((error) => {
                 console.log(error)
             })
     }
-    function resetcard() {
 
-        setinstance([])
-    }
     return (
-        <div className='bookinstance'>
-            <button className='button3' onClick={getbookinstance}>show all bookinstance</button>
+        <div className='BookInstance'>
+            <button className='button3' onClick={getBookInstance}>show all BookInstance</button>
             <button className='backbutton' onClick={() => { navigate(-1) }} >back</button>
             <table className="table table-striped">
                 <thead>
@@ -52,8 +49,8 @@ function Bookinstance() {
                                 <td>{item.status}</td>
 
                                 <td>{item.due_back}</td>
-                                <td>  <button className='bookinstanceupdate' onClick={() => { setsief(true) }}>UPDATE</button></td>
-                                <td>    <button className='bookinstancedelete' onClick={() => { setsidf(true) }}>DELETE</button></td>
+                                <td>  <button className='BookInstanceupdate' onClick={() => { setSief(true) }}>UPDATE</button></td>
+                                <td>    <button className='BookInstancedelete' onClick={() => { setSidf(true) }}>DELETE</button></td>
                             </tr>)
                     })}
 
@@ -62,17 +59,17 @@ function Bookinstance() {
 
                 </tbody>
             </table><br />
-            <button className='bookinstancecreate' onClick={() => { setsicf(true) }}>ADD NEW BOOKINSTANCE</button>
+            <button className='BookInstancecreate' onClick={() => { setSicf(true) }}>ADD NEW BookInstance</button>
 
 
-            <button className='authorcreate' onClick={() => { setsicf(false); setsief(false); setsidf(false) }}>close</button>
+            <button className='authorcreate' onClick={() => { setSicf(false); setSief(false); setSidf(false) }}>close</button>
 
-            {sicf && <Instancecreateform />}<br />
+            {sicf && <InstanceCreateForm />}<br />
 
-            {sief && <Instanceeditform />}<br />
-            {sidf && <Instancedeleteform />}<br />
+            {sief && <InstanceEditForm />}<br />
+            {sidf && <InstanceDeleteForm />}<br />
         </div>
     )
 }
 
-export default Bookinstance
+export default BookInstance

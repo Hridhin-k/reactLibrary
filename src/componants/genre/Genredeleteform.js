@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
-import axios from 'axios';
-function Genredeleteform() {
-    const [genredelete, setgenredelete] = useState({ _id: '' })
+
+import { deleteGenre } from '../../api/genre';
+function GenreDeleteForm() {
+    const [genreDelete, setGenreDelete] = useState({ _id: '' })
     function oninputform(e) {
         const { name, value } = e.target;
-        setgenredelete(preInput => { return ({ ...genredelete, [name]: value }) })
+        setGenreDelete(preInput => { return ({ ...genreDelete, [name]: value }) })
     }
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        await axios.post('https://restapimongoose.herokuapp.com/catalog/genre/delete/submit', genredelete)
-        setgenredelete({ _id: '' })
-        console.log(genredelete)
+        await deleteGenre(genreDelete)
+        setGenreDelete({ _id: '' })
+        console.log(genreDelete)
         alert('genre deleted')
     }
     return (
@@ -25,4 +26,4 @@ function Genredeleteform() {
     )
 }
 
-export default Genredeleteform
+export default GenreDeleteForm

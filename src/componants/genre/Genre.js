@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+
 import { useNavigate } from 'react-router-dom'
-import Genrecreateform from './Genrecreateform';
-import Genredeleteform from './Genredeleteform'
-import Genreeditform from './Genreeditform';
+import GenreCreateForm from './GenreCreateForm';
+import GenreDeleteForm from './GenreDeleteForm'
+import GenreEditForm from './GenreEditForm';
+import { getGenres } from '../../api/genre';
+
 function Genre() {
-    const [genre, setgenre] = useState([])
-    const [sgcf, setsgcf] = useState(false);
-    const [sgdf, setsgdf] = useState(false);
-    const [sgef, setsgef] = useState(false);
+    const [genre, setGenre] = useState([])
+    const [sgcf, setSgcf] = useState(false);
+    const [sgdf, setSgdf] = useState(false);
+    const [sgef, setSgef] = useState(false);
     const navigate = useNavigate();
-    function getgenre() {
+    function getGenre() {
 
 
-        axios.get('https://restapimongoose.herokuapp.com/catalog/genres').then(res => {
+        getGenres('/genres').then(res => {
             console.log(res.data)
-            const mygenre = res.data;
-            setgenre(mygenre)
+            const myGenre = res.data;
+            setGenre(myGenre)
 
         })
             .catch((error) => {
@@ -28,7 +30,7 @@ function Genre() {
 
     return (
         <div className='genre'>
-            <button className='button4' onClick={getgenre} >show genres</button>
+            <button className='button4' onClick={getGenre} >show genres</button>
             <button className='backbutton' onClick={() => { navigate(-1) }} >back</button>
 
 
@@ -45,8 +47,8 @@ function Genre() {
                             <tr key={item._id}>
                                 <td>{item._id}</td>
                                 <td>{item.name}</td>
-                                <td><button className='genreupdate' onClick={() => { setsgef(true) }}>UPDATE GENRE</button></td>
-                                <td><button className='genredelete' onClick={() => { setsgdf(true) }}>DELETE GENRE</button></td>
+                                <td><button className='genreupdate' onClick={() => { setSgef(true) }}>UPDATE GENRE</button></td>
+                                <td><button className='genredelete' onClick={() => { setSgdf(true) }}>DELETE GENRE</button></td>
                             </tr>)
                     })}
 
@@ -55,15 +57,15 @@ function Genre() {
 
                 </tbody>
             </table><br />
-            <button className='genrecreate' onClick={() => { setsgcf(true) }}>ADD NEW GENRE</button>
+            <button className='genrecreate' onClick={() => { setSgcf(true) }}>ADD NEW GENRE</button>
 
 
 
-            <button className='authorcreate' onClick={() => { setsgcf(false); setsgef(false); setsgdf(false) }}>close</button>
+            <button className='authorcreate' onClick={() => { setSgcf(false); setSgef(false); setSgdf(false) }}>close</button>
 
-            {sgcf && <Genrecreateform />}<br />
-            {sgef && <Genreeditform />}<br />
-            {sgdf && <Genredeleteform />}<br />
+            {sgcf && <GenreCreateForm />}<br />
+            {sgef && <GenreEditForm />}<br />
+            {sgdf && <GenreDeleteForm />}<br />
 
         </div>
     )

@@ -1,19 +1,20 @@
-import axios from 'axios'
+
 import React from 'react'
 import { useState } from 'react'
-function Authorcreateform() {
-    const [addauthor, setaddauthor] = useState({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
+import { createAuthor } from '../../api/author'
+function AuthorCreateForm() {
+    const [addAuthor, setAddAuthor] = useState({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
 
-    const oninputchange = (e) => {
+    const onInputChange = (e) => {
         const { name, value } = e.target
-        setaddauthor(prevInput => { return { ...addauthor, [name]: value } })
+        setAddAuthor(prevInput => { return { ...addAuthor, [name]: value } })
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('https://restapimongoose.herokuapp.com/catalog/author/create/submit', addauthor)
+        await createAuthor(addAuthor)
         alert('data inserted')
-        console.log(addauthor)
-        setaddauthor({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
+        console.log(addAuthor)
+        setAddAuthor({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
     }
     return (
         <>
@@ -22,20 +23,20 @@ function Authorcreateform() {
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label className='labelcontrol'>First name</label>
-                        <input type="text" name='first_name' onChange={oninputchange} className='inputcontrol' placeholder='first name of the author' required /><br /><br />
+                        <input type="text" name='first_name' onChange={onInputChange} className='inputcontrol' placeholder='first name of the author' required /><br /><br />
 
                         <label className='labelcontrol'>Family name</label>
 
-                        <input type='text' name='family_name' onChange={oninputchange} className='inputcontrol' placeholder='family name of the author' required /><br /><br />
+                        <input type='text' name='family_name' onChange={onInputChange} className='inputcontrol' placeholder='family name of the author' required /><br /><br />
 
                         <label className='labelcontrol'>date of birth</label>
 
-                        <input type="date" name='date_of_birth' onChange={oninputchange} className='inputcontrol' placeholder='date of birth of the author' required /><br /><br />
+                        <input type="date" name='date_of_birth' onChange={onInputChange} className='inputcontrol' placeholder='date of birth of the author' required /><br /><br />
 
 
                         <label className='labelcontrol'>date of death</label>
 
-                        <input type='date' name='date_of_death' onChange={oninputchange} className='inputcontrol' placeholder='date of death of the author' /><br /><br />
+                        <input type='date' name='date_of_death' onChange={onInputChange} className='inputcontrol' placeholder='date of death of the author' /><br /><br />
 
                     </div>
                     <input type='submit' className='formsubmit' value='ADD NEW AUTHOR' />
@@ -48,4 +49,4 @@ function Authorcreateform() {
     )
 }
 
-export default Authorcreateform
+export default AuthorCreateForm

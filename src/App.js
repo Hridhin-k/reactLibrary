@@ -2,7 +2,7 @@
 import './App.css';
 import Author from './componants/author/Author'
 import Book from './componants/book/Book'
-import Bookinstance from './componants/bookinstance/Bookinstance'
+import BookInstance from './componants/bookinstance/BookInstance'
 import Genre from './componants/genre/Genre'
 import Homepage from './pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,14 +22,14 @@ function App() {
 
               <Link className='link1' to="/Author">  Authors</Link>
               <Link className='link2' to="/Book"> Books</Link>
-              <Link className='link3' to="/Bookinstance"> Bookinstance</Link>
+              <Link className='link3' to="/BookInstance"> BookInstance</Link>
               <Link className='link4' to="/Genre"> Genre</Link>
             </nav>
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/Author" element={<Author />} />
               <Route path="/Book" element={<Book />} />
-              <Route path="/Bookinstance" element={<Bookinstance />} />
+              <Route path="/BookInstance" element={<BookInstance />} />
               <Route path="/Genre" element={<Genre />} />
             </Routes>
           </div>

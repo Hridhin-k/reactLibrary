@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import axios from 'axios'
-function Genreeditform() {
-    const [addgenre, setaddgenre] = useState({ _id: '', name: '' })
 
-    const oninputchange = (e) => {
+import { updateGenre } from '../../api/genre'
+function GenreEditForm() {
+    const [addGenre, setAddGenre] = useState({ _id: '', name: '' })
+
+    const onInputChange = (e) => {
         const { name, value } = e.target
-        setaddgenre(prevInput => { return { ...addgenre, [name]: value } })
+        setAddGenre(prevInput => { return { ...addGenre, [name]: value } })
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('https://restapimongoose.herokuapp.com/catalog/genre/update/submit', addgenre)
+        await updateGenre(addGenre)
         alert('DATA UPDATED SUCCESSFULLY')
-        console.log(addgenre)
-        setaddgenre({ _id: '', name: '' })
+        console.log(addGenre)
+        setAddGenre({ _id: '', name: '' })
     }
     return (
         <>
@@ -22,10 +23,10 @@ function Genreeditform() {
                     <div className="form-group">
 
                         <label className='labelcontrol'> GENRE ID - </label>
-                        <input type="text" name='_id' onChange={oninputchange} className='inputcontrol' placeholder='genre id you want to delete' required /><br /><br />
+                        <input type="text" name='_id' onChange={onInputChange} className='inputcontrol' placeholder='genre id you want to delete' required /><br /><br />
 
                         <label className='labelcontrol'>ADD GENRE - </label>
-                        <input type="text" name='name' onChange={oninputchange} className='inputcontrol' placeholder='eg: fantasy,action' required /><br /><br />
+                        <input type="text" name='name' onChange={onInputChange} className='inputcontrol' placeholder='eg: fantasy,action' required /><br /><br />
 
 
                     </div>
@@ -39,4 +40,4 @@ function Genreeditform() {
     )
 }
 
-export default Genreeditform
+export default GenreEditForm
