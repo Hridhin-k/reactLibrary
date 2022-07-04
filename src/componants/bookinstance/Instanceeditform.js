@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+
 import { updateInstance } from '../../api/bookInstance'
 function InstanceEditForm() {
     const [addInstance, setAddInstance] = useState({ _id: '', book: '', imprint: '', status: '', due_back: '' })
@@ -14,7 +14,7 @@ function InstanceEditForm() {
         await updateInstance(addInstance)
         alert('data updated')
         console.log(addInstance)
-        setAddInstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })
+        setAddInstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })// resetting form after sending data
     }
     return (
         <>

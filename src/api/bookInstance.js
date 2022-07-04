@@ -1,6 +1,6 @@
 import axios from './axios'
-const getInstances = () => axios.get('/instances')
-const createInstance = data => axios.post('/instance', data)
-const deleteInstance = data => axios.delete('/instance', data)
-const updateInstance = data => axios.put('/instance', data)
+const getInstances = () => axios.get('/bookinstances')
+const createInstance = data => axios.post('/bookinstance', data)
+const deleteInstance = data => axios.delete('/bookinstance', data)
+const updateInstance = data => axios.put('/bookinstance', data)
 export { getInstances, createInstance, updateInstance, deleteInstance }

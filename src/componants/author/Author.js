@@ -15,7 +15,7 @@ function Author() {
     const navigate = useNavigate();
 
     function getAuthor() {
-        // const { REACT_APP_LOCAL_URL } = process.env;
+
 
         getAuthors('/authors').then(res => {
 

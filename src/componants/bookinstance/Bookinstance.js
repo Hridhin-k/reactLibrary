@@ -13,7 +13,7 @@ function BookInstance() {
     const [sief, setSief] = useState(false);
     const navigate = useNavigate();
     function getBookInstance() {
-        axios.get('https://restapimongoose.herokuapp.com/catalog/bookinstances').then(res => {
+        getInstances(instance).then(res => {
             console.log(res.data)
             const myInstance = res.data;
             setInstance(myInstance)
@@ -21,6 +21,15 @@ function BookInstance() {
             .catch((error) => {
                 console.log(error)
             })
+
+        // axios.get('https://restapimongoose.herokuapp.com/catalog/bookinstances').then(res => {
+        //     console.log(res.data)
+        //     const myInstance = res.data;
+        //     setInstance(myInstance)
+        // })
+        //     .catch((error) => {
+        //         console.log(error)
+        //     })
     }
 
     return (
@@ -34,7 +43,7 @@ function BookInstance() {
                         <th>BOOK</th>
                         <th>IMPRINT</th>
                         <th>STATUS</th>
-                        <th> DUE BACK</th>
+                        <th>DUE BACK</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,8 +58,8 @@ function BookInstance() {
                                 <td>{item.status}</td>
 
                                 <td>{item.due_back}</td>
-                                <td>  <button className='BookInstanceupdate' onClick={() => { setSief(true) }}>UPDATE</button></td>
-                                <td>    <button className='BookInstancedelete' onClick={() => { setSidf(true) }}>DELETE</button></td>
+                                <td><button className='BookInstanceupdate' onClick={() => { setSief(true) }}>UPDATE</button></td>
+                                <td><button className='BookInstancedelete' onClick={() => { setSidf(true) }}>DELETE</button></td>
                             </tr>)
                     })}
 
