@@ -6,15 +6,17 @@ function InstanceDeleteForm() {
     const [instanceDelete, setInstanceDelete] = useState({ _id: '' })
     function onInputForm(e) {
         const { name, value } = e.target;
-        setInstanceDelete(preInput => { return ({ ...instanceDelete, [name]: value }) })
+        setInstanceDelete(preInput => { return { ...instanceDelete, [name]: value } })
     }
     const onSubmit = async (e) => {
         e.preventDefault()
-
-        await deleteInstance(instanceDelete)
-        setInstanceDelete({ _id: '' })
         console.log(instanceDelete)
+        await deleteInstance(instanceDelete)
+
         alert('instance deleted')
+
+        setInstanceDelete({ _id: '' })
+
     }
     return (
         <div className='card' >

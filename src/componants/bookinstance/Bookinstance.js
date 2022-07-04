@@ -22,14 +22,7 @@ function BookInstance() {
                 console.log(error)
             })
 
-        // axios.get('https://restapimongoose.herokuapp.com/catalog/bookinstances').then(res => {
-        //     console.log(res.data)
-        //     const myInstance = res.data;
-        //     setInstance(myInstance)
-        // })
-        //     .catch((error) => {
-        //         console.log(error)
-        //     })
+
     }
 
     return (

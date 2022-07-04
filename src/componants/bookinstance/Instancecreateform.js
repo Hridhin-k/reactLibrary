@@ -13,7 +13,7 @@ function InstanceCreateForm() {
         await createInstance(addInstance)
         alert('data inserted')
         console.log(addInstance)
-        setAddInstance({ book: '', imprint: '', status: '', due_back: '' })
+        setAddInstance({ book: '', imprint: '', status: '', due_back: '' })// RESET FORM AFTER SENDING DATA
     }
     return (
         <>
