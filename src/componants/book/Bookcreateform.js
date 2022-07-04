@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+// import { getAuthors } from '../../api/author.js'
 import { createBook } from '../../api/book'
+// import { getGenres } from '../../api/genre';
+
 function BookCreateForm() {
     const [addBook, setAddBook] = useState({ title: '', author: '', summary: '', isbn: '', genre: '' })
-
+    //const [auth, setAuth] = useState([])
+    //const [gen, setGen] = useState([])
     const onInputChange = (e) => {
         const { name, value } = e.target
         setAddBook(prevInput => { return { ...addBook, [name]: value } })
@@ -14,6 +18,37 @@ function BookCreateForm() {
         console.log(addBook)
         setAddBook({ title: '', author: '', summary: '', isbn: '', genre: '' })
     }
+
+    // const selectAuthors = () => {
+    //     getAuthors('/authors').then(res => {
+
+    //         const myAuthor = res.data;
+    //         setAuth(myAuthor)
+    //         console.log(myAuthor)
+    //     })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         })
+
+    // }
+    // const selectGenres = () => {
+    //     getGenres('/genres').then(res => {
+    //         console.log(res.data)
+    //         const myGenre = res.data;
+    //         setGen(myGenre)
+    //         console.log(myGenre)
+    //     })
+    //         .catch((error) => {
+    //             console.log(error)
+    //         })
+    // }
+
+
+
+
+
+
+
     return (
         <>
             <div className='card'>
@@ -22,10 +57,9 @@ function BookCreateForm() {
                     <div className="form-group">
                         <label className='labelcontrol'>TITLE </label>
                         <input type="text" name='title' onChange={onInputChange} className='inputcontrol' placeholder='first name of the book' required /><br /><br />
-
                         <label className='labelcontrol'>AUTHOR </label>
+                        <input type="text" name='author' onChange={onInputChange} className='inputcontrol' placeholder='name of author of the book' required /><br /><br />
 
-                        <input type='text' name='author' onChange={onInputChange} className='inputcontrol' placeholder='author name of the book' required /><br /><br />
 
                         <label className='labelcontrol'>SUMMARY </label>
 
@@ -52,3 +86,10 @@ function BookCreateForm() {
 }
 
 export default BookCreateForm
+
+
+{/* < select name='select author' onClick={selectAuthors} />
+
+{auth.map((item) => (
+    <option key={item._id}>{item.first_name} {item.family_name}</option>
+))}<br /><br /> */}

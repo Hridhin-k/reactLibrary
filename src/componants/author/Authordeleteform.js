@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { deleteAuthor } from '../../api/author';
 
 function AuthorDeleteForm({ id }) {
-    console.log('hello', id)
+
     const [authorDelete, setAuthorDelete] = useState({ _id: id })
 
     function onInputForm(e) {

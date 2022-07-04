@@ -1,7 +1,7 @@
 import axios from './axios'
 const createAuthor = (data) => axios.post('/author', data);
 const getAuthors = () => axios.get('/authors')
-const deleteAuthor = data => axios.delete('/bookinstance', {
+const deleteAuthor = data => axios.delete('/author', {
   data: {
     data: data
   }

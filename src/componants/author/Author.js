@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+
 import { useNavigate } from 'react-router-dom'
 import AuthorCreateForm from './AuthorCreateForm.js'
 import AuthorDeleteForm from './AuthorDeleteForm'
@@ -27,7 +27,7 @@ function Author() {
             })
 
     }
-    // console.log('hi', id)
+
     return (
         <div className='author'>
             <button className='button1' onClick={getAuthor}>show authors</button>
@@ -95,3 +95,4 @@ function Author() {
 }
 
 export default Author
+

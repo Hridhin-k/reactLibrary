@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import BookCreateForm from './BookCreateForm';
 import BookDeleteForm from './BookDeleteForm';
 import BookEditForm from './BookEditForm';
 import { getBooks } from '../../api/book';
+
 function Book() {
     const [book, setBook] = useState([])
     const [sbcf, setSbcf] = useState(false);
     const [sbdf, setSbdf] = useState(false);
     const [sbef, setSbef] = useState(false);
+
     const navigate = useNavigate();
     function getBook() {
 
@@ -23,7 +25,10 @@ function Book() {
             .catch((error) => {
                 console.log(error)
             })
+
     }
+
+
 
     return (
         <div className="book">
@@ -41,6 +46,7 @@ function Book() {
                     </tr>
                 </thead>
                 <tbody>
+                    {console.log(book)}
                     {book.map((item) => {
                         return (
 
