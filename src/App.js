@@ -2,13 +2,13 @@
 import './App.css';
 import Author from './componants/author/Author'
 import Book from './componants/book/Book'
-import BookInstance from './componants/bookinstance/BookInstance'
+import BookInstance from './componants/bookInstance/BookInstance'
 import Genre from './componants/genre/Genre'
-import Homepage from './pages/Homepage';
+import Homepage from './pages/HomePage';
 import Userlogin from './pages/UserLogin'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
-import Protectedroute from './Protectedroute';
+import Protectedroute from './ProtectedRoutes';
 
 function App() {
   function authData(data) {
