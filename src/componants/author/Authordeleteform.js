@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React, { useState } from 'react'
 import { deleteAuthor } from '../../api/author';
 
@@ -23,10 +23,10 @@ function AuthorDeleteForm({ id }) {
     }
     console.log(id)
     return (
-        <div className='card'>
-            <h3>AUTHOR DELETE FORM</h3>
-            <form onSubmit={onSubmit}>
-                <input type='text' name='_id' value={authorDelete._id} onChange={onInputForm} className='inputcontrol' placeholder='_id of the author you want to delete' required /><br /><br />
+        <div className='card' id='form1'>
+            <h3></h3>
+            <form onSubmit={onSubmit} className='form'>
+                <input type='text' name='_id' value={authorDelete._id} onChange={onInputForm} className='inputcontrol' placeholder='_id of the author you want to delete' required readOnly='readOnly' /><br /><br />
                 <input type='submit' className='formsubmit' value='DELETE AUTHOR' />
             </form>
         </div>

@@ -16,6 +16,7 @@ function BookCreateForm() {
         await createBook(addBook)
         alert('data inserted')
         console.log(addBook)
+
         setAddBook({ title: '', author: '', summary: '', isbn: '', genre: '' })
     }
 
@@ -51,8 +52,8 @@ function BookCreateForm() {
 
     return (
         <>
-            <div className='card'>
-                <h3>BOOK ADD FORM</h3>
+            <div className='card' id='form1'>
+                <h3>ADD BOOK</h3>
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label className='labelcontrol'>TITLE </label>

@@ -6,11 +6,12 @@ import AuthorDeleteForm from './AuthorDeleteForm'
 import AuthorEditForm from './AuthorEditForm'
 import { getAuthors } from '../../api/author.js'
 
+
 function Author() {
     const [author, setAuthor] = useState([])
-    const [sacf, setSacf] = useState(false);
-    const [sadf, setSadf] = useState(false);
-    const [saef, setSaef] = useState(false);
+    const [showCreateForm, setShowCreateForm] = useState(false);
+    const [showDeleteForm, setShowDeleteForm] = useState(false);
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
     const [id, setId] = useState('');
     const navigate = useNavigate();
 
@@ -25,9 +26,7 @@ function Author() {
             .catch((error) => {
                 console.log(error)
             })
-
     }
-
     return (
         <div className='author'>
             <button className='button1' onClick={getAuthor}>show authors</button>
@@ -56,39 +55,29 @@ function Author() {
                                 <td>{item.date_of_birth}</td>
 
                                 <td>{item.date_of_death}</td>
-                                <td>  <button className='authorbt' onClick={() => { setSaef(true) }} >UPDATE </button></td>
-                                <td>  <button className='authorbt' onClick={() => { setSadf(true); setId(item._id); console.log(id) }}>DELETE </button></td>
+                                <td>  <button className='authorbt' onClick={() => { setShowUpdateForm(true) }} >UPDATE </button></td>
+                                <td>  <button className='authorbt' onClick={() => { setShowDeleteForm(true); setId(item._id); console.log(id) }}>DELETE </button></td>
 
                             </tr>)
-
-
-
-
-
-
                     })}
-
-
-
-
                 </tbody>
             </table><br />
 
 
-            <button className='authorbt' onClick={() => { setSacf(true) }}>ADD NEW AUTHOR</button>
+            <button className='authorbt' onClick={() => { setShowCreateForm(true) }}>ADD NEW AUTHOR</button>
 
 
 
 
-            <button className='authorbt' onClick={() => { setSacf(false); setSaef(false); setSadf(false) }}>close</button>
+            <button className='authorbt' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
 
 
 
 
-            {sacf && <AuthorCreateForm />}
+            {showCreateForm && <AuthorCreateForm />}
 
-            {saef && <AuthorEditForm />}
-            {sadf && <AuthorDeleteForm id={id} />}
+            {showUpdateForm && <AuthorEditForm />}
+            {showDeleteForm && <AuthorDeleteForm id={id} />}
         </div >
 
     )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 import BookCreateForm from './BookCreateForm';
@@ -8,10 +8,10 @@ import { getBooks } from '../../api/book';
 
 function Book() {
     const [book, setBook] = useState([])
-    const [sbcf, setSbcf] = useState(false);
-    const [sbdf, setSbdf] = useState(false);
-    const [sbef, setSbef] = useState(false);
-
+    const [showCreateForm, setShowCreateForm] = useState(false);
+    const [showDeleteform, setShowDeleteForm] = useState(false);
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
+    const [id, setId] = useState('')
     const navigate = useNavigate();
     function getBook() {
 
@@ -58,8 +58,8 @@ function Book() {
                                 <td>{item.summary}</td>
                                 <td>{item.isbn}</td>
                                 <td>{item.genre}</td>
-                                <td> <button className='bookupdate' onClick={() => { setSbef(true) }} >UPDATE </button></td>
-                                <td>  <button className='bookdelete' onClick={() => { setSbdf(true) }}>DELETE </button></td>
+                                <td> <button className='bookupdate' onClick={() => { setShowUpdateForm(true) }} >UPDATE </button></td>
+                                <td>  <button className='bookdelete' onClick={() => { setShowDeleteForm(true); setId(item._id) }}>DELETE </button></td>
 
                             </tr>)
                     })}
@@ -69,13 +69,13 @@ function Book() {
 
                 </tbody>
             </table><br />
-            <button className='bookcreate' onClick={() => { setSbcf(true) }}>ADD NEW BOOK</button>
+            <button className='bookcreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW BOOK</button>
 
 
-            <button className='authorcreate' onClick={() => { setSbcf(false); setSbef(false); setSbdf(false) }}>close</button>
-            {sbcf && <BookCreateForm />}<br />
-            {sbef && <BookEditForm />}<br />
-            {sbdf && <BookDeleteForm />}<br />
+            <button className='authorcreate' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
+            {showCreateForm && <BookCreateForm />}<br />
+            {showUpdateForm && <BookEditForm />}<br />
+            {showDeleteform && <BookDeleteForm id={id} />}<br />
 
         </div>
     )

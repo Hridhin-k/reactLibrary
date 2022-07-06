@@ -8,9 +8,10 @@ import { getGenres } from '../../api/genre';
 
 function Genre() {
     const [genre, setGenre] = useState([])
-    const [sgcf, setSgcf] = useState(false);
-    const [sgdf, setSgdf] = useState(false);
-    const [sgef, setSgef] = useState(false);
+    const [showCreateForm, setShowCreateForm] = useState(false);
+    const [showDeleteForm, setShowDeleteForm] = useState(false);
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
+    const [id, setId] = useState('')
     const navigate = useNavigate();
     function getGenre() {
 
@@ -46,9 +47,10 @@ function Genre() {
                         return (
                             <tr key={item._id}>
                                 <td>{item._id}</td>
+
                                 <td>{item.name}</td>
-                                <td><button className='genreupdate' onClick={() => { setSgef(true) }}>UPDATE GENRE</button></td>
-                                <td><button className='genredelete' onClick={() => { setSgdf(true) }}>DELETE GENRE</button></td>
+                                <td><button className='genreupdate' onClick={() => { setShowUpdateForm(true) }}>UPDATE GENRE</button></td>
+                                <td><button className='genredelete' onClick={() => { setShowDeleteForm(true); setId(item._id); console.log(item._id) }}>DELETE GENRE</button></td>
                             </tr>)
                     })}
 
@@ -57,15 +59,15 @@ function Genre() {
 
                 </tbody>
             </table><br />
-            <button className='genrecreate' onClick={() => { setSgcf(true) }}>ADD NEW GENRE</button>
+            <button className='genrecreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW GENRE</button>
 
 
 
-            <button className='authorcreate' onClick={() => { setSgcf(false); setSgef(false); setSgdf(false) }}>close</button>
+            <button className='authorcreate' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
 
-            {sgcf && <GenreCreateForm />}<br />
-            {sgef && <GenreEditForm />}<br />
-            {sgdf && <GenreDeleteForm />}<br />
+            {showCreateForm && <GenreCreateForm />}<br />
+            {showUpdateForm && <GenreEditForm />}<br />
+            {showDeleteForm && <GenreDeleteForm id={id} />}
 
         </div>
     )

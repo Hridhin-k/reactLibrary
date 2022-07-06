@@ -5,12 +5,13 @@ import InstanceCreateForm from './InstanceCreateForm';
 import InstanceDeleteForm from './InstanceDeleteForm';
 import InstanceEditForm from './InstanceEditForm';
 import { getInstances } from '../../api/bookInstance';
-import axios from 'axios';
+
 function BookInstance() {
     const [instance, setInstance] = useState([])
-    const [sicf, setSicf] = useState(false);
-    const [sidf, setSidf] = useState(false);
-    const [sief, setSief] = useState(false);
+    const [showCreateForm, setShowCreateForm] = useState(false);
+    const [showDeleteForm, setShowDeleteForm] = useState(false);
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
+    const [id, setId] = useState('')
     const navigate = useNavigate();
     function getBookInstance() {
         getInstances(instance).then(res => {
@@ -51,8 +52,8 @@ function BookInstance() {
                                 <td>{item.status}</td>
 
                                 <td>{item.due_back}</td>
-                                <td><button className='BookInstanceupdate' onClick={() => { setSief(true) }}>UPDATE</button></td>
-                                <td><button className='BookInstancedelete' onClick={() => { setSidf(true) }}>DELETE</button></td>
+                                <td><button className='BookInstanceupdate' onClick={() => { setShowUpdateForm(true) }}>UPDATE</button></td>
+                                <td><button className='BookInstancedelete' onClick={() => { setShowDeleteForm(true); setId(item._id); console.log(item._id) }}>DELETE</button></td>
                             </tr>)
                     })}
 
@@ -61,16 +62,16 @@ function BookInstance() {
 
                 </tbody>
             </table><br />
-            <button className='BookInstancecreate' onClick={() => { setSicf(true) }}>ADD NEW BookInstance</button>
+            <button className='BookInstancecreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW BookInstance</button>
 
 
-            <button className='authorcreate' onClick={() => { setSicf(false); setSief(false); setSidf(false) }}>close</button>
+            <button className='authorcreate' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
 
-            {sicf && <InstanceCreateForm />}<br />
+            {showCreateForm && <InstanceCreateForm />} <br />
 
-            {sief && <InstanceEditForm />}<br />
-            {sidf && <InstanceDeleteForm />}<br />
-        </div>
+            {showUpdateForm && <InstanceEditForm />} <br />
+            {showDeleteForm && <InstanceDeleteForm id={id} />} <br />
+        </div >
     )
 }
 

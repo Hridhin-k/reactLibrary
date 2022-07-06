@@ -1,5 +1,5 @@
 import React, { useState, } from 'react'
-import axios from 'axios'
+
 import { updateAuthor } from '../../api/author'
 function AuthorEditForm() {
     const [addAuthor, setAddAuthor] = useState({ _id: '', first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
@@ -17,8 +17,8 @@ function AuthorEditForm() {
     }
     return (
         <>
-            <div className='card'>
-                <h3>AUTHOR EDIT FORM</h3>
+            <div className='card' id='form1'>
+                <h3>EDIT AUTHOR INFO</h3>
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
 

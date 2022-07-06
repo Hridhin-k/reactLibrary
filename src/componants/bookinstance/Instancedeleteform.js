@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import axios from 'axios'
-import { deleteInstance } from '../../api/bookInstance';
-function InstanceDeleteForm() {
 
-    const [instanceDelete, setInstanceDelete] = useState({ _id: '' })
+import { deleteInstance } from '../../api/bookInstance';
+function InstanceDeleteForm({ id }) {
+
+    const [instanceDelete, setInstanceDelete] = useState({ _id: id })
     function onInputForm(e) {
         const { name, value } = e.target;
         setInstanceDelete(preInput => { return { ...instanceDelete, [name]: value } })
@@ -19,10 +19,10 @@ function InstanceDeleteForm() {
 
     }
     return (
-        <div className='card' >
+        <div className='card' id='form1'>
             <h3 >BOOK INSTANCE DELETE FORM</h3>
-            <form onSubmit={onSubmit}>
-                <input type='text' name='_id' onChange={onInputForm} className='inputcontrol' placeholder='_id of the instance you want to delete' required /><br /><br />
+            <form onSubmit={onSubmit} className='form'>
+                <input type='text' name='_id' value={instanceDelete._id} onChange={onInputForm} className='inputcontrol' placeholder='_id of the instance you want to delete' required readOnly='readOnly' /><br /><br />
                 <input type='submit' className='formsubmit' value='DELETE' />
             </form>
         </div>

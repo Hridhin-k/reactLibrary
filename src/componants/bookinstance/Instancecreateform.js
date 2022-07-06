@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import React, { useState } from 'react'
 import { createInstance } from '../../api/bookInstance'
 function InstanceCreateForm() {
@@ -17,8 +17,8 @@ function InstanceCreateForm() {
     }
     return (
         <>
-            <div className='card'>
-                <h3>BOOKINSTANCE ADD FORM</h3>
+            <div className='card' id='form1'>
+                <h3>ADD NEW INSTANCE</h3>
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label className='labelcontrol'>BOOK</label>

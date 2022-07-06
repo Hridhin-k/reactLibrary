@@ -17,7 +17,7 @@ function GenreCreateForm() {
     }
     return (
         <>
-            <div className='card'>
+            <div className='card' id='form1'>
                 <h3>GENRE CREATE FORM</h3>
                 <form onSubmit={onSubmit} className="form-horizontal">
                     <div className="form-group">
