@@ -16,7 +16,7 @@ function BookCreateForm() {
         try {
             const resp = await createBook(addBook)
             if (resp.status == 200) {
-                console.log('blah', resp.status)
+                console.log(resp.status)
                 alert('data inserted')
                 console.log(addBook)
 

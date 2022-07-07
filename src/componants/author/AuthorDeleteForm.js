@@ -15,7 +15,7 @@ function AuthorDeleteForm({ id }) {
         try {
             const resp = await deleteAuthor(authorDelete)
             if (resp.status == 200) {
-                console.log('blah', resp.status)
+                console.log(resp.status)
                 setAuthorDelete({ _id: '' })
 
                 console.log(authorDelete)

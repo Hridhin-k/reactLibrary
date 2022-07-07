@@ -16,7 +16,7 @@ function AuthorEditForm() {
         try {
             const resp = await updateAuthor(addAuthor)
             if (resp.status == 200) {
-                console.log('blah', resp.status)
+                console.log(resp.status)
                 alert('DATA INSERTED SUCCESSFULLY')
 
                 setAddAuthor({ _id: '', first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })

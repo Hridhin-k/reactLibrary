@@ -17,7 +17,7 @@ function BookInstance() {
         getInstances(instance).then(res => {
 
             if (res.status == 200) {
-                console.log('blah', res.status)
+                console.log(res.status)
                 console.log(res.data)
                 const myInstance = res.data;
                 setInstance(myInstance)

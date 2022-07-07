@@ -13,7 +13,7 @@ function Bookeditform() {
         try {
             const resp = await updateBook(book)
             if (resp.status == 200) {
-                console.log('blah', resp.status)
+                console.log(resp.status)
                 alert('BOOK UPDATED SUCCESSFULLY')
                 setBook({ _id: '', title: '', author: '', summary: '', isbn: '', genre: '' })
             }

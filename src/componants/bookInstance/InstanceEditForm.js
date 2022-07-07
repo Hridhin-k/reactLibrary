@@ -14,7 +14,7 @@ function InstanceEditForm() {
         try {
             const resp = await updateInstance(addInstance)
             if (resp.status == 200) {
-                console.log('blah', resp.status)
+                console.log(resp.status)
                 alert('data updated')
                 console.log(addInstance)
                 setAddInstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })// resetting form after sending data
