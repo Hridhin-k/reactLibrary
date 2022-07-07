@@ -19,8 +19,9 @@ function Author() {
 
 
         getAuthors('/authors').then(res => {
-            // const { resp } = res.status
-            if (res.status) {
+
+            if (res.status == 200) {
+
                 console.log(res.status)
                 const myAuthor = res.data;
                 setAuthor(myAuthor)

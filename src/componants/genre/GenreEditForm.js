@@ -12,8 +12,9 @@ function GenreEditForm() {
         e.preventDefault();
         try {
             const resp = await updateGenre(addGenre)
-            if (resp.status) {
+            if (resp.status == 200) {
                 alert('DATA UPDATED SUCCESSFULLY')
+                console.log('blah', resp.status)
                 console.log(addGenre)
                 setAddGenre({ _id: '', name: '' })
             }

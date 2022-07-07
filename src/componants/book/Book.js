@@ -17,8 +17,9 @@ function Book() {
 
 
         getBooks('/books').then(res => {
-            // const { resp } = res.status
-            if (res.status) {
+
+            if (res.status == 200) {
+                console.log('blah', res.status)
                 const { book } = res.data;//destructured
                 setBook(book)
             }

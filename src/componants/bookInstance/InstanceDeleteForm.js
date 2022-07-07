@@ -13,9 +13,9 @@ function InstanceDeleteForm({ id }) {
         try {
             console.log(instanceDelete)
             const resp = await deleteInstance(instanceDelete)
-            if (resp.status) {
+            if (resp.status == 200) {
                 alert('instance deleted')
-
+                console.log('blah', resp.status)
                 setInstanceDelete({ _id: '' })
             }
         }

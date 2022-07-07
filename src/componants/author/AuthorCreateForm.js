@@ -13,7 +13,8 @@ function AuthorCreateForm() {
         e.preventDefault();
         try {
             const resp = await createAuthor(addAuthor)
-            if (resp.status) {
+            if (resp.status == 200) {
+                console.log('blah', resp.status)
                 alert('data inserted')
                 console.log(addAuthor)
                 setAddAuthor({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })

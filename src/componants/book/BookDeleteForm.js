@@ -11,7 +11,8 @@ function BookDeleteForm({ id }) {
         e.preventDefault()
         try {
             const resp = await deleteBook(bookId);
-            if (resp.status) {
+            if (resp.status == 200) {
+                console.log('blah', resp.status)
                 setBookId({ _id: '' })
                 console.log(bookId)
                 alert('book deleted')

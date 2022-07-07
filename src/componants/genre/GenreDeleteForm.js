@@ -12,8 +12,9 @@ function GenreDeleteForm({ id }) {
         e.preventDefault()
         try {
             const resp = await deleteGenre(genreDelete)
-            if (resp.status) {
+            if (resp.status == 200) {
                 console.log(genreDelete)
+                console.log('blah', resp.status)
                 alert('genre deleted')
                 setGenreDelete({ _id: '' })
             }

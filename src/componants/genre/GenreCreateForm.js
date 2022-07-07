@@ -12,8 +12,8 @@ function GenreCreateForm() {
         e.preventDefault();
         try {
             const resp = await createGenre(addGenre)
-            if (resp.status) {
-                console.log('hahahah', resp.status)
+            if (resp.status == 200) {
+                console.log(resp.status)
                 alert('data inserted')
                 console.log(addGenre)
                 setAddGenre({ name: '' })

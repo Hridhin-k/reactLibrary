@@ -17,11 +17,12 @@ function Genre() {
 
 
         getGenres('/genres').then(res => {
-            // const { resp } = res.status
+
             console.log(res)
 
-            if (res.status) {
+            if (res.status == 200) {
                 console.log(res.data)
+                console.log('blah', res.status)
                 const myGenre = res.data;
                 setGenre(myGenre)
             }

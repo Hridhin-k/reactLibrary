@@ -15,7 +15,8 @@ function BookCreateForm() {
         e.preventDefault();
         try {
             const resp = await createBook(addBook)
-            if (resp.status) {
+            if (resp.status == 200) {
+                console.log('blah', resp.status)
                 alert('data inserted')
                 console.log(addBook)
 

@@ -12,8 +12,9 @@ function InstanceCreateForm() {
         e.preventDefault();
         try {
             const resp = await createInstance(addInstance)
-            if (resp.status) {
+            if (resp.status == 200) {
                 alert('data inserted')
+                console.log('blah', resp.status)
                 console.log(addInstance)
                 setAddInstance({ book: '', imprint: '', status: '', due_back: '' })// RESET FORM AFTER SENDING DATA
             }
