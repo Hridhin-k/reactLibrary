@@ -19,9 +19,12 @@ function Author() {
 
 
         getAuthors('/authors').then(res => {
-
-            const myAuthor = res.data;
-            setAuthor(myAuthor)
+            // const { resp } = res.status
+            if (res.status) {
+                console.log(res.status)
+                const myAuthor = res.data;
+                setAuthor(myAuthor)
+            }
         })
             .catch((error) => {
                 console.log(error)

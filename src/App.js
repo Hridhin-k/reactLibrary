@@ -9,10 +9,13 @@ import Userlogin from './pages/UserLogin'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
 import Protectedroute from './ProtectedRoutes';
+import { useState } from 'react';
 
 function App() {
+  const [key, setKey] = useState(false)
   function authData(data) {
     console.log("FROM APP : AUTH DATA , ", data)
+    setKey(data)
   }
 
   return (
@@ -32,15 +35,15 @@ function App() {
               <Link className='link4' to="/Genre"> Genre</Link>
 
               <Link className='link5' to="/UserLogin">User Login</Link>
-              <button>logout</button>
+              <button className='logout' onClick={() => { setKey(false); <Route path="/" element={<Homepage />} /> }}       >logout</button>
             </nav>
             <Routes>
               <Route path="/" element={<Homepage />} />
 
-              <Route path="/Author" element={<Author />} />
-              <Route path="/Book" element={<Book />} />
-              <Route path="/BookInstance" element={<BookInstance />} />
-              <Route path="/Genre" element={<Genre />} />
+              <Route path="/Author" element={<Protectedroute login={key}><Author /></Protectedroute>} />
+              <Route path="/Book" element={<Protectedroute login={key}><Book /></Protectedroute>} />
+              <Route path="/BookInstance" element={<Protectedroute login={key}><BookInstance /></Protectedroute>} />
+              <Route path="/Genre" element={<Protectedroute login={key}><Genre /></Protectedroute>} />
               <Route path='/UserLogin' element={<Userlogin authData={authData} />} />
 
             </Routes>

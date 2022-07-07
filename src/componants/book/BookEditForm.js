@@ -10,9 +10,16 @@ function Bookeditform() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await updateBook(book)
-        alert('BOOK UPDATED SUCCESSFULLY')
-        setBook({ _id: '', title: '', author: '', summary: '', isbn: '', genre: '' })
+        try {
+            const resp = await updateBook(book)
+            if (resp.status) {
+                alert('BOOK UPDATED SUCCESSFULLY')
+                setBook({ _id: '', title: '', author: '', summary: '', isbn: '', genre: '' })
+            }
+        }
+        catch (err) {
+            console.log('error in sending data')
+        }
     }
     return (
         <>

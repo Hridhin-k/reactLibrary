@@ -10,10 +10,17 @@ function GenreEditForm() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await updateGenre(addGenre)
-        alert('DATA UPDATED SUCCESSFULLY')
-        console.log(addGenre)
-        setAddGenre({ _id: '', name: '' })
+        try {
+            const resp = await updateGenre(addGenre)
+            if (resp.status) {
+                alert('DATA UPDATED SUCCESSFULLY')
+                console.log(addGenre)
+                setAddGenre({ _id: '', name: '' })
+            }
+        }
+        catch (err) {
+            console.log('error')
+        }
     }
     return (
         <>

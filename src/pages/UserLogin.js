@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 function UserLogin({ authData }) {
   const [auth, setAuth] = useState(false)
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
-
+  const navigate = useNavigate();
   useEffect(() => {
     authData(auth);
   }, [auth])
@@ -23,9 +23,10 @@ function UserLogin({ authData }) {
   const submitHandler = (e) => {
     e.preventDefault()
     if (name === 'User' && password === 'Password') {
-      setAuth(true)
+      setAuth(true);
 
-      console.log('success')
+      console.log('success');
+
     }
     else {
 
@@ -37,11 +38,11 @@ function UserLogin({ authData }) {
 
   return (
     <>
-      <div className='container'>
+      <div className='card' id='logincard'>
         <form onSubmit={submitHandler}>
-          <input type='text' placeholder='enter the username' onChange={onInputName} required /><br /><br />
-          <input type='password' placeholder='enter the password' onChange={onInputPassword} required /><br /><br />
-          <input type="submit" />
+          <input type='text' placeholder='enter the username' onChange={onInputName} className='loginput' required /><br /><br />
+          <input type='password' placeholder='enter the password' onChange={onInputPassword} className='loginput' required /><br /><br />
+          <input type="submit" value='login' className='login' />
         </form>
       </div>
     </>

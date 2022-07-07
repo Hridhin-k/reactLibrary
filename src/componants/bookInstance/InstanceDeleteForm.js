@@ -10,13 +10,18 @@ function InstanceDeleteForm({ id }) {
     }
     const onSubmit = async (e) => {
         e.preventDefault()
-        console.log(instanceDelete)
-        await deleteInstance(instanceDelete)
+        try {
+            console.log(instanceDelete)
+            const resp = await deleteInstance(instanceDelete)
+            if (resp.status) {
+                alert('instance deleted')
 
-        alert('instance deleted')
-
-        setInstanceDelete({ _id: '' })
-
+                setInstanceDelete({ _id: '' })
+            }
+        }
+        catch (err) {
+            console.log('error')
+        }
     }
     return (
         <div className='card' id='form1'>

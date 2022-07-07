@@ -10,10 +10,17 @@ function InstanceCreateForm() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await createInstance(addInstance)
-        alert('data inserted')
-        console.log(addInstance)
-        setAddInstance({ book: '', imprint: '', status: '', due_back: '' })// RESET FORM AFTER SENDING DATA
+        try {
+            const resp = await createInstance(addInstance)
+            if (resp.status) {
+                alert('data inserted')
+                console.log(addInstance)
+                setAddInstance({ book: '', imprint: '', status: '', due_back: '' })// RESET FORM AFTER SENDING DATA
+            }
+        }
+        catch (err) {
+            console.log('error')
+        }
     }
     return (
         <>

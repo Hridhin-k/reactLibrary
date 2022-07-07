@@ -13,11 +13,19 @@ function BookCreateForm() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await createBook(addBook)
-        alert('data inserted')
-        console.log(addBook)
+        try {
+            const resp = await createBook(addBook)
+            if (resp.status) {
+                alert('data inserted')
+                console.log(addBook)
 
-        setAddBook({ title: '', author: '', summary: '', isbn: '', genre: '' })
+                setAddBook({ title: '', author: '', summary: '', isbn: '', genre: '' })
+            }
+        }
+
+        catch (error) {
+            console.log('error in sending data')
+        }
     }
 
     // const selectAuthors = () => {

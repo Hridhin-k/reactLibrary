@@ -17,10 +17,14 @@ function Genre() {
 
 
         getGenres('/genres').then(res => {
-            console.log(res.data)
-            const myGenre = res.data;
-            setGenre(myGenre)
+            // const { resp } = res.status
+            console.log(res)
 
+            if (res.status) {
+                console.log(res.data)
+                const myGenre = res.data;
+                setGenre(myGenre)
+            }
         })
             .catch((error) => {
                 console.log(error)

@@ -10,10 +10,18 @@ function GenreCreateForm() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await createGenre(addGenre)
-        alert('data inserted')
-        console.log(addGenre)
-        setAddGenre({ name: '' })
+        try {
+            const resp = await createGenre(addGenre)
+            if (resp.status) {
+                console.log('hahahah', resp.status)
+                alert('data inserted')
+                console.log(addGenre)
+                setAddGenre({ name: '' })
+            }
+        }
+        catch (err) {
+            console.log('error')
+        }
     }
     return (
         <>

@@ -17,9 +17,11 @@ function Book() {
 
 
         getBooks('/books').then(res => {
-            console.log(res)
-            const myBook = res.data;
-            setBook(myBook)
+            // const { resp } = res.status
+            if (res.status) {
+                const { book } = res.data;//destructured
+                setBook(book)
+            }
 
         })
             .catch((error) => {

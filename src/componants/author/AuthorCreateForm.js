@@ -11,10 +11,17 @@ function AuthorCreateForm() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await createAuthor(addAuthor)
-        alert('data inserted')
-        console.log(addAuthor)
-        setAddAuthor({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
+        try {
+            const resp = await createAuthor(addAuthor)
+            if (resp.status) {
+                alert('data inserted')
+                console.log(addAuthor)
+                setAddAuthor({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
+            }
+        }
+        catch (err) {
+            console.log('error in sending data')
+        }
     }
     return (
         <>

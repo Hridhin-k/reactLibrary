@@ -12,14 +12,18 @@ function AuthorDeleteForm({ id }) {
     }
     const onSubmit = async (e) => {
         e.preventDefault()
+        try {
+            const resp = await deleteAuthor(authorDelete)
+            if (resp.status) {
+                setAuthorDelete({ _id: '' })
 
-        const resp = await deleteAuthor(authorDelete)
-        console.log('DELETED RESPONSE ', resp)
-        setAuthorDelete({ _id: '' })
-
-        console.log(authorDelete)
-        alert('author deleted')
-        console.log('new')
+                console.log(authorDelete)
+                alert('author deleted')
+            }
+        }
+        catch (err) {
+            console.log('error in sending data')
+        }
     }
     console.log(id)
     return (

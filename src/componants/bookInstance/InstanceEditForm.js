@@ -11,10 +11,17 @@ function InstanceEditForm() {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await updateInstance(addInstance)
-        alert('data updated')
-        console.log(addInstance)
-        setAddInstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })// resetting form after sending data
+        try {
+            const resp = await updateInstance(addInstance)
+            if (resp.status) {
+                alert('data updated')
+                console.log(addInstance)
+                setAddInstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })// resetting form after sending data
+            }
+        }
+        catch (err) {
+            console.log('error')
+        }
     }
     return (
         <>

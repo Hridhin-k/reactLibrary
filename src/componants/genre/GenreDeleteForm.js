@@ -10,12 +10,17 @@ function GenreDeleteForm({ id }) {
     }
     const onSubmit = async (e) => {
         e.preventDefault()
-
-        await deleteGenre(genreDelete)
-
-        console.log(genreDelete)
-        alert('genre deleted')
-        setGenreDelete({ _id: '' })
+        try {
+            const resp = await deleteGenre(genreDelete)
+            if (resp.status) {
+                console.log(genreDelete)
+                alert('genre deleted')
+                setGenreDelete({ _id: '' })
+            }
+        }
+        catch (err) {
+            console.log('error')
+        }
     }
     return (
         <div className='card' id='form1'>

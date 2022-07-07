@@ -9,11 +9,17 @@ function BookDeleteForm({ id }) {
     }
     const onSubmit = async (e) => {
         e.preventDefault()
-
-        await deleteBook(bookId);
-        setBookId({ _id: '' })
-        console.log(bookId)
-        alert('book deleted')
+        try {
+            const resp = await deleteBook(bookId);
+            if (resp.status) {
+                setBookId({ _id: '' })
+                console.log(bookId)
+                alert('book deleted')
+            }
+        }
+        catch (err) {
+            console.log('error in sending data')
+        }
     }
 
     return (

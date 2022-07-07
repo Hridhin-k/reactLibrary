@@ -15,9 +15,12 @@ function BookInstance() {
     const navigate = useNavigate();
     function getBookInstance() {
         getInstances(instance).then(res => {
-            console.log(res.data)
-            const myInstance = res.data;
-            setInstance(myInstance)
+            //const { resp } = res.status;
+            if (res.status) {
+                console.log(res.data)
+                const myInstance = res.data;
+                setInstance(myInstance)
+            }
         })
             .catch((error) => {
                 console.log(error)
