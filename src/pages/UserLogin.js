@@ -1,50 +1,58 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
+import { userLogin } from '../api/user';
+import SignUp from './SignUp';
+
 function UserLogin({ authData }) {
   const [auth, setAuth] = useState(false)
-  const [name, setName] = useState('')
-  const [password, setPassword] = useState('')
+
+  const [login, setLogin] = useState({ name: '', email: '', password: '' })
   const navigate = useNavigate();
-  useEffect(() => {
-    authData(auth);
-  }, [auth])
+  // useEffect(() => {
+  //   authData(auth);
+  // }, [auth])
 
-  const onInputName = (e) => {
-    setName(e.target.value)
+  const onInputChange = (e) => {
+    const { name, value } = e.target
+    // console.log('name', name)
+    // console.log('value', value)
 
-
+    setLogin(prevInput => { return { ...login, [name]: value } })
 
   }
-  const onInputPassword = (e) => {
-    setPassword(e.target.value)
-  }
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+
+      const resp = await userLogin(login)
+      if (resp.data.user) {
+        console.log('heelo', resp.data)
+        console.log('hyylo', resp.status)
+        alert('hello you are logged in')
 
 
-  const submitHandler = (e) => {
-    e.preventDefault()
-    if (name === 'User' && password === 'Password') {
-      setAuth(true);
-
-      console.log('success');
-
+      }
+      else { alert('invalid user details') }
     }
-    else {
-
-      alert('wrong username or password')
+    catch (err) {
+      console.log('error invalid user details')
     }
-    setName('');
-    setPassword('');
   }
-
   return (
     <>
       <div className='card' id='logincard'>
         <form onSubmit={submitHandler}>
-          <input type='text' placeholder='enter the username' onChange={onInputName} className='loginput' required /><br /><br />
-          <input type='password' placeholder='enter the password' onChange={onInputPassword} className='loginput' required /><br /><br />
+
+          <input type='text' name='name' placeholder='enter the username' onChange={onInputChange} className='loginput' required /><br /><br />
+          <input type='text' name='email' placeholder='enter the email address' onChange={onInputChange} className='loginput' required /><br /><br />
+          <input type='password' name='password' placeholder='enter the password' onChange={onInputChange} className='loginput' required /><br /><br />
+
           <input type="submit" value='login' className='login' />
         </form>
       </div>
+
+
     </>
   )
 }

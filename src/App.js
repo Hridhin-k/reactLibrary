@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
 import Protectedroute from './ProtectedRoutes';
 import { useState } from 'react';
+import SignUp from './pages/SignUp';
 
 function App() {
   const [key, setKey] = useState(false)
@@ -35,6 +36,7 @@ function App() {
               <Link className='link4' to="/Genre"> Genre</Link>
 
               <Link className='link5' to="/UserLogin">User Login</Link>
+              <Link className='link6' to="/SignUp">Sign Up</Link>
               <button className='logout' onClick={() => { setKey(false); <Route path="/" element={<Homepage />} /> }}       >logout</button>
             </nav>
             <Routes>
@@ -46,6 +48,7 @@ function App() {
               <Route path="/Genre" element={<Protectedroute login={key}><Genre /></Protectedroute>} />
               <Route path='/UserLogin' element={<Userlogin authData={authData} />} />
 
+              <Route path="/SignUp" element={<SignUp />} />
             </Routes>
           </div>
         </BrowserRouter>
