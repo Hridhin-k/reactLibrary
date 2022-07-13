@@ -37,7 +37,7 @@ function App() {
 
               <Link className='link5' to="/UserLogin">User Login</Link>
               <Link className='link6' to="/SignUp">Sign Up</Link>
-              <button className='logout' onClick={() => { setKey(false); <Route path="/" element={<Homepage />} /> }}       >logout</button>
+              <button className='logout' onClick={() => { setKey(false); <Route path="/" element={<Homepage />} />; window.localStorage.removeItem('token') }}       >logout</button>
             </nav>
             <Routes>
               <Route path="/" element={<Homepage />} />

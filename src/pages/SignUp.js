@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { createUser } from '../api/user'
+import { useNavigate } from 'react-router-dom'
 
 function SignUp() {
   const [register, setRegister] = useState({ name: '', email: '', password: '' })
+  const navigate = useNavigate();
   const onInputChange = (e) => {
     const { name, value } = e.target
     setRegister(prevInput => { return { ...register, [name]: value } })
@@ -16,7 +18,8 @@ function SignUp() {
         console.log(resp.status)
         alert('user created')
         console.log(register)
-        setRegister({ name: '' })
+        navigate(-1)
+
       }
     }
     catch (err) {
