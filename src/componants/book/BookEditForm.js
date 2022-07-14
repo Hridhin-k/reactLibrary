@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 import { updateBook } from '../../api/book'
-function Bookeditform() {
-    const [book, setBook] = useState({ _id: '', title: '', author: '', summary: '', isbn: '', genre: '' })
+function Bookeditform({ id }) {
+    const [book, setBook] = useState({ _id: id, title: '', author: '', summary: '', isbn: '', genre: '' })
 
     const onInputChange = (e) => {
         const { name, value } = e.target
@@ -30,29 +30,29 @@ function Bookeditform() {
                     <div className="form-group">
 
                         <label className='labelcontrol'>_ID</label>
-                        <input type="text" name='_id' onChange={onInputChange} className='inputcontrol' placeholder='enter the id of the book you want to edit' required /><br /><br />
+                        <input type="text" name='_id' value={book._id} onChange={onInputChange} className='inputcontrol' placeholder='enter the id of the book you want to edit' required readOnly='readOnly' /><br /><br />
 
 
                         <label className='labelcontrol'>TITLE</label>
-                        <input type="text" name='title' onChange={onInputChange} className='inputcontrol' placeholder=' name of the book' required /><br /><br />
+                        <input type="text" name='title' value={book.title} onChange={onInputChange} className='inputcontrol' placeholder=' name of the book' required /><br /><br />
 
                         <label className='labelcontrol'>AUTHOR</label>
 
-                        <input type='text' name='author' onChange={onInputChange} className='inputcontrol' placeholder='author of the book' required /><br /><br />
+                        <input type='text' name='author' value={book.author} onChange={onInputChange} className='inputcontrol' placeholder='author of the book' required /><br /><br />
 
                         <label className='labelcontrol'>SUMMARY</label>
 
-                        <input type="text" name='summary' onChange={onInputChange} className='inputcontrol' placeholder='summary of the book' required /><br /><br />
+                        <input type="text" name='summary' value={book.summary} onChange={onInputChange} className='inputcontrol' placeholder='summary of the book' required /><br /><br />
 
 
                         <label className='labelcontrol'>ISBN</label>
 
-                        <input type='text' name='isbn' onChange={onInputChange} className='inputcontrol' placeholder='isbn of the book' /><br /><br />
+                        <input type='text' name='isbn' value={book.isbn} onChange={onInputChange} className='inputcontrol' placeholder='isbn of the book' /><br /><br />
 
 
                         <label className='labelcontrol'>GENRE</label>
 
-                        <input type='text' name='genre' onChange={onInputChange} className='inputcontrol' placeholder='genre of the book' /><br /><br />
+                        <input type='text' name='genre' value={book.genre} onChange={onInputChange} className='inputcontrol' placeholder='genre of the book' /><br /><br />
 
                     </div>
                     <input type='submit' className='formsubmit' value='EDIT BOOK' />

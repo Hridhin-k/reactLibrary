@@ -59,8 +59,8 @@ function Author() {
                                 <td>{item.date_of_birth}</td>
 
                                 <td>{item.date_of_death}</td>
-                                <td>  <button className='authorbt' onClick={() => { setShowUpdateForm(true) }} >UPDATE </button></td>
-                                <td>  <button className='authorbt' onClick={() => { setShowDeleteForm(true); setId(item._id); console.log(id) }}>DELETE </button></td>
+                                <td>  <button className='authorbt' onClick={() => { setShowUpdateForm(true); setId(item._id) }} >UPDATE </button></td>
+                                <td>  <button className='authorbt' onClick={() => { setShowDeleteForm(true); setId(item._id); }}>DELETE </button></td>
 
                             </tr>)
                     })}
@@ -80,7 +80,7 @@ function Author() {
 
             {showCreateForm && <AuthorCreateForm />}
 
-            {showUpdateForm && <AuthorEditForm />}
+            {showUpdateForm && <AuthorEditForm id={id} />}
             {showDeleteForm && <AuthorDeleteForm id={id} />}
         </div >
 

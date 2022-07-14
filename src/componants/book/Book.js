@@ -61,7 +61,7 @@ function Book() {
                                 <td>{item.summary}</td>
                                 <td>{item.isbn}</td>
                                 <td>{item.genre}</td>
-                                <td> <button className='bookupdate' onClick={() => { setShowUpdateForm(true) }} >UPDATE </button></td>
+                                <td> <button className='bookupdate' onClick={() => { setShowUpdateForm(true); setId(item._id) }} >UPDATE </button></td>
                                 <td>  <button className='bookdelete' onClick={() => { setShowDeleteForm(true); setId(item._id) }}>DELETE </button></td>
 
                             </tr>)
@@ -77,7 +77,7 @@ function Book() {
 
             <button className='authorcreate' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
             {showCreateForm && <BookCreateForm />}<br />
-            {showUpdateForm && <BookEditForm />}<br />
+            {showUpdateForm && <BookEditForm id={id} />}<br />
             {showDeleteform && <BookDeleteForm id={id} />}<br />
 
         </div>

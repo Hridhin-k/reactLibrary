@@ -1,9 +1,9 @@
 import React, { useState, } from 'react'
 
 import { updateAuthor } from '../../api/author'
-function AuthorEditForm() {
+function AuthorEditForm({ id }) {
 
-    const [addAuthor, setAddAuthor] = useState({ _id: '', first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
+    const [addAuthor, setAddAuthor] = useState({ _id: id, first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
 
     const onInputChange = (e) => {
         const { name, value } = e.target
@@ -34,7 +34,7 @@ function AuthorEditForm() {
                     <div className="form-group">
 
                         <label className='labelcontrol'>_id</label>
-                        <input type="text" name='_id' value={addAuthor._id} onChange={onInputChange} className='inputcontrol' placeholder='enter the id of the author you want to edit' required /><br /><br />
+                        <input type="text" name='_id' value={addAuthor._id} onChange={onInputChange} className='inputcontrol' placeholder='enter the id of the author you want to edit' required readOnly='readOnly' /><br /><br />
 
 
                         <label className='labelcontrol'>First name</label>

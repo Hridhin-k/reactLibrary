@@ -17,7 +17,7 @@ function InstanceEditForm() {
                 console.log(resp.status)
                 alert('data updated')
                 console.log(addInstance)
-                setAddInstance({ _id: '', book: '', imprint: '', status: '', due_back: '' })// resetting form after sending data
+                setAddInstance({ _id: '', book: '', imprint: '', status: '', dueback: '' })// resetting form after sending data
             }
         }
         catch (err) {

@@ -31,7 +31,7 @@ function AuthorDeleteForm({ id }) {
         <div className='card' id='form1'>
             <h3></h3>
             <form onSubmit={onSubmit} className='form'>
-                <input type='text' name='_id' value={authorDelete._id} onChange={onInputForm} className='inputcontrol' placeholder='_id of the author you want to delete' required readOnly='readOnly' /><br /><br />
+                <input type='text' name='_id' value={authorDelete._id} onChange={onInputForm} className='inputcontrol' required readOnly='readOnly' /><br /><br />
                 <input type='submit' className='formsubmit' value='DELETE AUTHOR' />
             </form>
         </div>

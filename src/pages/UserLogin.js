@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { userLogin } from '../api/user';
 
 function UserLogin({ authData }) {
-  const [auth, setAuth] = useState(false)
+  //const [auth, setAuth] = useState(false)
 
   const [login, setLogin] = useState({ name: '', email: '', password: '' })
   const navigate = useNavigate();
-  useEffect(() => {
-    authData(auth);
-  }, [auth])
+  // useEffect(() => {
+  //   authData(auth);
+  // }, [auth])
 
   const onInputChange = (e) => {
     const { name, value } = e.target
@@ -23,14 +23,14 @@ function UserLogin({ authData }) {
     e.preventDefault();
     try {
 
-      const resp = await userLogin(login)
+      const resp = await userLogin(login) //axios call
 
 
       if (resp.data.user) {
         console.log(resp.data)
         console.log(resp.status)
         alert('hello you are logged in')
-        setAuth(true)
+        //setAuth(true)
         window.localStorage.setItem('token', JSON.stringify(resp.data.user))
         navigate(-1)
       }
