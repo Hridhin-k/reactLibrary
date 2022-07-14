@@ -54,7 +54,7 @@ function Genre() {
                                 <td>{item._id}</td>
 
                                 <td>{item.name}</td>
-                                <td><button className='genreupdate' onClick={() => { setShowUpdateForm(true) }}>UPDATE GENRE</button></td>
+                                <td><button className='genreupdate' onClick={() => { setShowUpdateForm(true); setId(item._id) }}>UPDATE GENRE</button></td>
                                 <td><button className='genredelete' onClick={() => { setShowDeleteForm(true); setId(item._id); console.log(item._id) }}>DELETE GENRE</button></td>
                             </tr>)
                     })}
@@ -68,10 +68,10 @@ function Genre() {
 
 
 
-            <button className='authorcreate' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
+            <button className='formback' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
 
             {showCreateForm && <GenreCreateForm />}<br />
-            {showUpdateForm && <GenreEditForm />}<br />
+            {showUpdateForm && <GenreEditForm id={id} />}<br />
             {showDeleteForm && <GenreDeleteForm id={id} />}
 
         </div>

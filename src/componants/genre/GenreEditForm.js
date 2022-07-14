@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 import { updateGenre } from '../../api/genre'
-function GenreEditForm() {
-    const [addGenre, setAddGenre] = useState({ _id: '', name: '' })
+function GenreEditForm({ id }) {
+    const [addGenre, setAddGenre] = useState({ _id: id, name: '' })
 
     const onInputChange = (e) => {
         const { name, value } = e.target
@@ -31,7 +31,7 @@ function GenreEditForm() {
                     <div className="form-group">
 
                         <label className='labelcontrol'> GENRE ID - </label>
-                        <input type="text" name='_id' onChange={onInputChange} className='inputcontrol' placeholder='genre id you want to delete' required /><br /><br />
+                        <input type="text" name='_id' value={addGenre._id} onChange={onInputChange} className='inputcontrol' required readOnly='readOnly' /><br /><br />
 
                         <label className='labelcontrol'>ADD GENRE - </label>
                         <input type="text" name='name' onChange={onInputChange} className='inputcontrol' placeholder='eg: fantasy,action' required /><br /><br />

@@ -172,3 +172,8 @@ body {}
 .link6 {
   padding: 5px 15px;
 }
+
+.formback {
+  background-color: cornflowerblue;
+  color: whitesmoke
+}

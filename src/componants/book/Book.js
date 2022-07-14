@@ -75,7 +75,7 @@ function Book() {
             <button className='bookcreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW BOOK</button>
 
 
-            <button className='authorcreate' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
+            <button className='formback' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
             {showCreateForm && <BookCreateForm />}<br />
             {showUpdateForm && <BookEditForm id={id} />}<br />
             {showDeleteform && <BookDeleteForm id={id} />}<br />

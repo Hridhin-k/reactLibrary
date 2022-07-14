@@ -73,7 +73,7 @@ function Author() {
 
 
 
-            <button className='authorbt' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
+            <button className='formback' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
 
 
 

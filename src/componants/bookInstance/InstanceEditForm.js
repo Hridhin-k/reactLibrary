@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 import { updateInstance } from '../../api/bookInstance'
-function InstanceEditForm() {
-    const [addInstance, setAddInstance] = useState({ _id: '', book: '', imprint: '', status: '', due_back: '' })
+function InstanceEditForm({ id }) {
+    const [addInstance, setAddInstance] = useState({ _id: id, book: '', imprint: '', status: '', due_back: '' })
 
     const onInputChange = (e) => {
         const { name, value } = e.target
@@ -33,24 +33,24 @@ function InstanceEditForm() {
 
 
                         <label className='labelcontrol'>_ID</label>
-                        <input type="text" name='_id' onChange={onInputChange} className='inputcontrol'
+                        <input type="text" name='_id' value={addInstance._id} onChange={onInputChange} className='inputcontrol'
                             placeholder='id of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>BOOK</label>
-                        <input type="text" name='book' onChange={onInputChange} className='inputcontrol' placeholder='id  of the bookinstance' required /><br /><br />
+                        <input type="text" name='book' value={addInstance.book} onChange={onInputChange} className='inputcontrol' placeholder='id  of the bookinstance' required readOnly='readOnly' /><br /><br />
 
                         <label className='labelcontrol'>IMPRINT</label>
 
-                        <input type='text' name='imprint' onChange={onInputChange} className='inputcontrol' placeholder='imprint of the bookinstance' required /><br /><br />
+                        <input type='text' name='imprint' value={addInstance.imprint} onChange={onInputChange} className='inputcontrol' placeholder='imprint of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>STATUS</label>
 
-                        <input type="text" name='status' onChange={onInputChange} className='inputcontrol' placeholder='status of the bookinstance' required /><br /><br />
+                        <input type="text" name='status' value={addInstance.status} onChange={onInputChange} className='inputcontrol' placeholder='status of the bookinstance' required /><br /><br />
 
 
                         <label className='labelcontrol'>DUEBACK</label>
 
-                        <input type='date' name='due_back' onChange={onInputChange} className='inputcontrol' placeholder='dueback date of the bookinstance' /><br /><br />
+                        <input type='date' name='due_back' value={addInstance.due_back} onChange={onInputChange} className='inputcontrol' placeholder='dueback date of the bookinstance' /><br /><br />
 
 
 

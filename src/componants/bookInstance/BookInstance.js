@@ -56,7 +56,7 @@ function BookInstance() {
                                 <td>{item.status}</td>
 
                                 <td>{item.due_back}</td>
-                                <td><button className='BookInstanceupdate' onClick={() => { setShowUpdateForm(true) }}>UPDATE</button></td>
+                                <td><button className='BookInstanceupdate' onClick={() => { setShowUpdateForm(true); setId(item._id) }}>UPDATE</button></td>
                                 <td><button className='BookInstancedelete' onClick={() => { setShowDeleteForm(true); setId(item._id); console.log(item._id) }}>DELETE</button></td>
                             </tr>)
                     })}
@@ -69,11 +69,11 @@ function BookInstance() {
             <button className='BookInstancecreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW BookInstance</button>
 
 
-            <button className='authorcreate' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
+            <button className='formback' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
 
             {showCreateForm && <InstanceCreateForm />} <br />
 
-            {showUpdateForm && <InstanceEditForm />} <br />
+            {showUpdateForm && <InstanceEditForm id={id} />} <br />
             {showDeleteForm && <InstanceDeleteForm id={id} />} <br />
         </div >
     )
