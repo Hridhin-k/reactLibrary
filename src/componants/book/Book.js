@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 import BookCreateForm from './BookCreateForm';
@@ -12,7 +12,18 @@ function Book() {
     const [showDeleteform, setShowDeleteForm] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
     const [id, setId] = useState('')
+    const [type, setType] = useState('')
     const navigate = useNavigate();
+    useEffect(() => {
+        if (localStorage.getItem('type'))
+            setType(localStorage.getItem('type'));
+
+        else {
+            setType('user');
+        }
+        getBook()
+    }, []);
+
     function getBook() {
 
 
@@ -35,12 +46,12 @@ function Book() {
 
     return (
         <div className="book">
-            <button className='button2' onClick={getBook}>show all books</button>
+
             <button className='backbutton' onClick={() => { navigate(-1) }} >back</button>
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
+
                         <th>TITLE</th>
                         <th>AUTHOR</th>
                         <th>SUMMARY</th>
@@ -54,15 +65,13 @@ function Book() {
                         return (
 
                             <tr key={item._id}>
-                                <td>{item._id}</td>
                                 <td>{item.title}</td>
                                 <td>{item.author}</td>
-
                                 <td>{item.summary}</td>
                                 <td>{item.isbn}</td>
                                 <td>{item.genre}</td>
-                                <td> <button className='bookupdate' onClick={() => { setShowUpdateForm(true); setId(item._id) }} >UPDATE </button></td>
-                                <td>  <button className='bookdelete' onClick={() => { setShowDeleteForm(true); setId(item._id) }}>DELETE </button></td>
+                                <td>{type === 'admin' ? <button className='bookupdate' onClick={() => { setShowUpdateForm(true); setId(item._id) }} >UPDATE </button> : ''}</td>
+                                <td>{type === 'admin' ? <button className='bookdelete' onClick={() => { setShowDeleteForm(true); setId(item._id) }}>DELETE </button> : ''}</td>
 
                             </tr>)
                     })}
@@ -72,10 +81,10 @@ function Book() {
 
                 </tbody>
             </table><br />
-            <button className='bookcreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW BOOK</button>
+            {type === 'admin' ? <button className='bookcreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW BOOK</button> : ''}
 
 
-            <button className='formback' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button>
+            {type === 'admin' ? <button className='formback' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button> : ''}
             {showCreateForm && <BookCreateForm />}<br />
             {showUpdateForm && <BookEditForm id={id} />}<br />
             {showDeleteform && <BookDeleteForm id={id} />}<br />

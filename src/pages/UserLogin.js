@@ -1,37 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import { userLogin } from '../api/user';
 
-function UserLogin({ authData }) {
-  //const [auth, setAuth] = useState(false)
 
+function UserLogin() {
   const [login, setLogin] = useState({ name: '', email: '', password: '' })
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   authData(auth);
-  // }, [auth])
+
 
   const onInputChange = (e) => {
     const { name, value } = e.target
-
-
     setLogin(prevInput => { return { ...login, [name]: value } })
-
   }
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-
       const resp = await userLogin(login) //axios call
-
-
       if (resp.data.user) {
-        console.log(resp.data)
-        console.log(resp.status)
+        // console.log(resp.data)
+        // console.log(resp.status)
         alert('hello you are logged in')
-        //setAuth(true)
-        window.localStorage.setItem('token', JSON.stringify(resp.data.user))
+        //console.log(resp.data.type)
+        window.localStorage.setItem('token', resp.data.user)
+        window.localStorage.setItem('type', resp.data.type)
         navigate(-1)
       }
       else {
@@ -55,7 +46,9 @@ function UserLogin({ authData }) {
           <input type='password' name='password' placeholder='enter the password' onChange={onInputChange} className='loginput' required /><br /><br />
 
           <input type="submit" value='login' className='login' />
+
         </form>
+
       </div>
 
 

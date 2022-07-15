@@ -1,4 +1,4 @@
-import axios from './axios'
+import axios from '.'
 
 const getInstances = () => axios.get('/bookinstances',)
 const createInstance = data => axios.post('/bookinstance', data,)

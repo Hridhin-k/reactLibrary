@@ -1,4 +1,4 @@
-import axios from './axios';
+import axios from '.';
 
 const getGenres = () => axios.get('/genres')
 const createGenre = data => axios.post('/genre', data,)

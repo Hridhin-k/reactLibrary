@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom';
 
-const Protectedroute = ({ login, children }) => {
-  console.log('this is to check protected route', login)
-  if (!login) {
+const Protectedroute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
     return (
 
       <Navigate to="/" replace />)

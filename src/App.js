@@ -14,8 +14,6 @@ import SignUp from './pages/SignUp';
 
 function Root() {
   const navigate = useNavigate();
-  const tToken = window.localStorage.getItem('token');
-  console.log(tToken)
   return (
 
 
@@ -24,7 +22,7 @@ function Root() {
 
       <div>
 
-        <div className='topbox' > <h4>BITITUDE TECH</h4></div>
+        <div className='topbox' > <h4>REACTLIB</h4></div>
         <div>
           <nav className='appnav'>
             <h1 className='heading'>THE LIBRARY</h1>
@@ -34,18 +32,19 @@ function Root() {
             <Link className='link2' to="/Book"> Books</Link>
             <Link className='link3' to="/BookInstance"> BookInstance</Link>
             <Link className='link4' to="/Genre"> Genre</Link>
-
-            <Link className='link5' to="/UserLogin">User Login</Link>
-            <Link className='link6' to="/SignUp">Sign Up</Link>
-            <button className='logout' onClick={() => { navigate('/'); window.localStorage.removeItem('token') }}>logout</button>
+            {!localStorage.getItem('token') && <Link className='link5' to="/UserLogin">User Login</Link>}
+            {!localStorage.getItem('token') && <Link className='link6' to="/SignUp">Sign Up</Link>}
+            {localStorage.getItem('token') &&
+              <button className='logout' onClick={() => { navigate('/'); localStorage.removeItem('token'); localStorage.removeItem('type') }
+              }>logout</button>}
           </nav>
           <Routes>
             <Route path="/" element={<Homepage />} />
 
-            <Route path="/Author" element={<Protectedroute login={tToken}><Author /></Protectedroute>} />
-            <Route path="/Book" element={<Protectedroute login={tToken}><Book /></Protectedroute>} />
-            <Route path="/BookInstance" element={<Protectedroute login={tToken}><BookInstance /></Protectedroute>} />
-            <Route path="/Genre" element={<Protectedroute login={tToken}><Genre /></Protectedroute>} />
+            <Route path="/Author" element={<Protectedroute><Author /></Protectedroute>} />
+            <Route path="/Book" element={<Protectedroute><Book /></Protectedroute>} />
+            <Route path="/BookInstance" element={<Protectedroute><BookInstance /></Protectedroute>} />
+            <Route path="/Genre" element={<Protectedroute><Genre /></Protectedroute>} />
             <Route path='/UserLogin' element={<Userlogin />} />
 
             <Route path="/SignUp" element={<SignUp />} />

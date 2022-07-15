@@ -1,4 +1,4 @@
-import axios from './axios';
+import axios from '.';
 
 const getBooks = () => axios.get('/books',);
 const deleteBook = data => axios.delete(`/book/${data._id}`);
