@@ -14,7 +14,11 @@ function BookInstance() {
     const [showUpdateForm, setShowUpdateForm] = useState(false);
     const [id, setId] = useState('')
     const [type, setType] = useState(null)
+    const [acknowledgement, setAcknowledgement] = useState(null)
     const navigate = useNavigate();
+    const pull_data = (data) => {
+        setAcknowledgement(data)
+    }
     useEffect(() => {
         if (localStorage.getItem('type'))
             setType(localStorage.getItem('type'));
@@ -24,7 +28,7 @@ function BookInstance() {
         }
         getBookInstance()
 
-    }, [])
+    }, [acknowledgement])
 
     function getBookInstance() {
         getInstances(instance).then(res => {
@@ -47,6 +51,7 @@ function BookInstance() {
         <div className='BookInstance'>
 
             <button className='backbutton' onClick={() => { navigate(-1) }} >back</button>
+
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -69,8 +74,8 @@ function BookInstance() {
                                 <td>{item.status}</td>
 
                                 <td>{item.due_back}</td>
-                                <td>{type === 'admin' ? <button className='BookInstanceupdate' onClick={() => { setShowUpdateForm(true); setId(item._id) }}>UPDATE</button> : ''}</td>
-                                <td>{type === 'admin' ? <button className='BookInstancedelete' onClick={() => { setShowDeleteForm(true); setId(item._id); console.log(item._id) }}>DELETE</button> : ''}</td>
+                                <td>{type === 'admin' ? <button className='authorbt' onClick={() => { setShowUpdateForm(true); setId(item._id) }}>UPDATE</button> : ''}</td>
+                                <td>{type === 'admin' ? <button className='authorbt' onClick={() => { setShowDeleteForm(true); setId(item._id); console.log(item._id) }}>DELETE</button> : ''}</td>
                             </tr>)
                     })}
 
@@ -79,15 +84,15 @@ function BookInstance() {
 
                 </tbody>
             </table><br />
-            {type === 'admin' ? <button className='BookInstancecreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW BookInstance</button> : ''}
+            {type === 'admin' ? <button className='authorbt' onClick={() => { setShowCreateForm(true) }}>ADD Instance</button> : ''}
 
 
             {type === 'admin' ? <button className='formback' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button> : ''}
 
-            {showCreateForm && <InstanceCreateForm />} <br />
+            {showCreateForm && <InstanceCreateForm func={pull_data} />} <br />
 
-            {showUpdateForm && <InstanceEditForm id={id} />} <br />
-            {showDeleteForm && <InstanceDeleteForm id={id} />} <br />
+            {showUpdateForm && <InstanceEditForm id={id} func={pull_data} />} <br />
+            {showDeleteForm && <InstanceDeleteForm id={id} func={pull_data} />} <br />
         </div >
     )
 }

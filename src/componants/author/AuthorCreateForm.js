@@ -2,8 +2,12 @@
 import React from 'react'
 import { useState } from 'react'
 import { createAuthor } from '../../api/author'
-function AuthorCreateForm() {
+function AuthorCreateForm(props) {
     const [addAuthor, setAddAuthor] = useState({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
+    const [akn, setAkn] = useState(null)
+
+    props.func(akn)
+
 
     const onInputChange = (e) => {
         const { name, value } = e.target
@@ -16,7 +20,9 @@ function AuthorCreateForm() {
             if (resp.status == 200) {
                 console.log(resp.status)
                 alert('data inserted')
+
                 console.log(addAuthor)
+                setAkn(true)
                 setAddAuthor({ first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
             }
         }

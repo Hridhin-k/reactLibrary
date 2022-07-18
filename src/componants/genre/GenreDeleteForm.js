@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
 import { deleteGenre } from '../../api/genre';
-function GenreDeleteForm({ id }) {
-    const [genreDelete, setGenreDelete] = useState({ _id: id })
-    console.log('hhh', id)
+function GenreDeleteForm(props) {
+    const [genreDelete, setGenreDelete] = useState({ _id: props.id })
+    const [akn, setAkn] = useState(null)
+    props.func(akn)
     function oninputform(e) {
         const { name, value } = e.target;
         setGenreDelete(preInput => { return ({ ...genreDelete, [name]: value }) })
@@ -16,6 +17,7 @@ function GenreDeleteForm({ id }) {
                 console.log(genreDelete)
                 console.log(resp.status)
                 alert('genre deleted')
+                setAkn(true)
                 setGenreDelete({ _id: '' })
             }
         }

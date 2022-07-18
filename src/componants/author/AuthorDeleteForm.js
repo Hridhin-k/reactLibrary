@@ -2,10 +2,10 @@
 import React, { useState } from 'react'
 import { deleteAuthor } from '../../api/author';
 
-function AuthorDeleteForm({ id }) {
-
-    const [authorDelete, setAuthorDelete] = useState({ _id: id })
-
+function AuthorDeleteForm(props) {
+    const [akn, setAkn] = useState(null)
+    const [authorDelete, setAuthorDelete] = useState({ _id: props.id })
+    props.func(akn)
     function onInputForm(e) {
         const { name, value } = e.target;
         setAuthorDelete(preInput => { return ({ ...authorDelete, [name]: value }) })
@@ -17,7 +17,7 @@ function AuthorDeleteForm({ id }) {
             if (resp.status == 200) {
                 console.log(resp.status)
                 setAuthorDelete({ _id: '' })
-
+                setAkn(true)
                 console.log(authorDelete)
                 alert('author deleted')
             }
@@ -26,7 +26,7 @@ function AuthorDeleteForm({ id }) {
             console.log('error in sending data')
         }
     }
-    console.log(id)
+
     return (
         <div className='card' id='form1'>
             <h3></h3>

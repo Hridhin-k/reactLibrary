@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react'
 import { createBook } from '../../api/book'
 
 
-function BookCreateForm() {
+function BookCreateForm(props) {
+    const [akn, setAkn] = useState(null)
     const [addBook, setAddBook] = useState({ title: '', author: '', summary: '', isbn: '', genre: '' })
-
+    props.func(akn)
     const onInputChange = (e) => {
         const { name, value } = e.target
         setAddBook(prevInput => { return { ...addBook, [name]: value } })
@@ -18,7 +19,7 @@ function BookCreateForm() {
                 console.log(resp.status)
                 alert('data inserted')
                 console.log(addBook)
-
+                setAkn(true)
                 setAddBook({ title: '', author: '', summary: '', isbn: '', genre: '' })
             }
         }

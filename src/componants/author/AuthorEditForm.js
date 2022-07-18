@@ -1,10 +1,10 @@
 import React, { useState, } from 'react'
 
 import { updateAuthor } from '../../api/author'
-function AuthorEditForm({ id }) {
-
-    const [addAuthor, setAddAuthor] = useState({ _id: id, first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
-
+function AuthorEditForm(props) {
+    const [akn, setAkn] = useState(null)
+    const [addAuthor, setAddAuthor] = useState({ _id: props.id, first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
+    props.func(akn)
     const onInputChange = (e) => {
         const { name, value } = e.target
         setAddAuthor(prevInput => { return { ...addAuthor, [name]: value } })
@@ -18,7 +18,7 @@ function AuthorEditForm({ id }) {
             if (resp.status == 200) {
                 console.log(resp.status)
                 alert('DATA INSERTED SUCCESSFULLY')
-
+                setAkn(true)
                 setAddAuthor({ _id: '', first_name: '', family_name: '', date_of_birth: '', date_of_death: '' })
             }
         }

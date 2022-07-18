@@ -1,8 +1,10 @@
 import React from 'react'
 import { deleteBook } from '../../api/book';
 import { useState } from 'react'
-function BookDeleteForm({ id }) {
-    const [bookId, setBookId] = useState({ _id: id })
+function BookDeleteForm(props) {
+    const [akn, setAkn] = useState(null)
+    const [bookId, setBookId] = useState({ _id: props.id })
+    props.func(akn)
     function onInputChange(e) {
         const { name, value } = e.target;
         setBookId(preInput => { return ({ ...bookId, [name]: value }) })
@@ -16,6 +18,7 @@ function BookDeleteForm({ id }) {
                 setBookId({ _id: '' })
                 console.log(bookId)
                 alert('book deleted')
+                setAkn(true)
             }
         }
         catch (err) {

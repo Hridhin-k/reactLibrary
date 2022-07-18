@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 
 import { updateInstance } from '../../api/bookInstance'
-function InstanceEditForm({ id }) {
-    const [addInstance, setAddInstance] = useState({ _id: id, book: '', imprint: '', status: '', due_back: '' })
-
+function InstanceEditForm(props) {
+    const [akn, setAkn] = useState(null)
+    const [addInstance, setAddInstance] = useState({ _id: props.id, book: '', imprint: '', status: '', due_back: '' })
+    props.func(akn)
     const onInputChange = (e) => {
         const { name, value } = e.target
 
@@ -17,6 +18,7 @@ function InstanceEditForm({ id }) {
                 console.log(resp.status)
                 alert('data updated')
                 console.log(addInstance)
+                setAkn(true)
                 setAddInstance({ _id: '', book: '', imprint: '', status: '', dueback: '' })// resetting form after sending data
             }
         }
@@ -34,10 +36,10 @@ function InstanceEditForm({ id }) {
 
                         <label className='labelcontrol'>_ID</label>
                         <input type="text" name='_id' value={addInstance._id} onChange={onInputChange} className='inputcontrol'
-                            placeholder='id of the bookinstance' required /><br /><br />
+                            placeholder='id of the bookinstance' required readOnly='readOnly' /><br /><br />
 
                         <label className='labelcontrol'>BOOK</label>
-                        <input type="text" name='book' value={addInstance.book} onChange={onInputChange} className='inputcontrol' placeholder='id  of the bookinstance' required readOnly='readOnly' /><br /><br />
+                        <input type="text" name='book' value={addInstance.book} onChange={onInputChange} className='inputcontrol' placeholder='id  of the bookinstance' required /><br /><br />
 
                         <label className='labelcontrol'>IMPRINT</label>
 
@@ -45,7 +47,13 @@ function InstanceEditForm({ id }) {
 
                         <label className='labelcontrol'>STATUS</label>
 
-                        <input type="text" name='status' value={addInstance.status} onChange={onInputChange} className='inputcontrol' placeholder='status of the bookinstance' required /><br /><br />
+                        <select name='status' onChange={onInputChange}>
+                            <option value="available">available</option>
+                            <option value="maintenance">maintenance</option>
+                            <option value="loaned">loaned</option>
+                            <option value="reserved">reserved</option>
+
+                        </select><br /><br />
 
 
                         <label className='labelcontrol'>DUEBACK</label>

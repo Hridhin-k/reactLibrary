@@ -17,7 +17,10 @@ function Genre() {
     const navigate = useNavigate();
     // const type = localStorage.getItem('type')
     console.log('CHEXKTYPE', type)
-
+    const [ackmowledgement, setAcknowledgement] = useState(null)
+    const pull_data = (data) => {
+        setAcknowledgement(data)
+    }
     useEffect(() => {
         if (localStorage.getItem('type'))
             setType(localStorage.getItem('type'));
@@ -26,7 +29,7 @@ function Genre() {
             setType('user');
         }
         getGenre();
-    }, [])
+    }, [ackmowledgement])
 
     function getGenre() {
 
@@ -68,8 +71,8 @@ function Genre() {
                             return (
                                 <tr key={item._id}>
                                     <td>{item.name}</td>
-                                    <td> {type === 'admin' ? <button className='genreupdate' onClick={() => { setShowUpdateForm(true); setId(item._id) }}>UPDATE GENRE</button> : ''}</td>
-                                    <td> {type === 'admin' ? <button className='genredelete' onClick={() => { setShowDeleteForm(true); setId(item._id) }}>DELETE GENRE</button> : ''}</td>
+                                    <td> {type === 'admin' ? <button className='authorbt' onClick={() => { setShowUpdateForm(true); setId(item._id) }}>UPDATE </button> : ''}</td>
+                                    <td> {type === 'admin' ? <button className='authorbt' onClick={() => { setShowDeleteForm(true); setId(item._id) }}>DELETE </button> : ''}</td>
                                 </tr>)
                         })}
 
@@ -78,15 +81,15 @@ function Genre() {
 
                     </tbody>
                 </table><br />
-                {type === 'admin' ? <button className='genrecreate' onClick={() => { setShowCreateForm(true) }}>ADD NEW GENRE</button> : ''}
+                {type === 'admin' ? <button className='authorbt' onClick={() => { setShowCreateForm(true) }}>ADD GENRE</button> : ''}
 
 
 
                 {type === 'admin' ? <button className='formback' onClick={() => { setShowCreateForm(false); setShowUpdateForm(false); setShowDeleteForm(false) }}>close</button> : ''}
 
-                {showCreateForm && <GenreCreateForm />}<br />
-                {showUpdateForm && <GenreEditForm id={id} />}<br />
-                {showDeleteForm && <GenreDeleteForm id={id} />}
+                {showCreateForm && <GenreCreateForm func={pull_data} />}<br />
+                {showUpdateForm && <GenreEditForm id={id} func={pull_data} />}<br />
+                {showDeleteForm && <GenreDeleteForm id={id} func={pull_data} />}
 
             </div>
         </>

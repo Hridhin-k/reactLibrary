@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 
 import { deleteInstance } from '../../api/bookInstance';
-function InstanceDeleteForm({ id }) {
+function InstanceDeleteForm(props) {
 
-    const [instanceDelete, setInstanceDelete] = useState({ _id: id })
+    const [instanceDelete, setInstanceDelete] = useState({ _id: props.id })
+    const [akn, setAkn] = useState(null)
+    props.func(akn)
     function onInputForm(e) {
         const { name, value } = e.target;
         setInstanceDelete(preInput => { return { ...instanceDelete, [name]: value } })
@@ -16,6 +18,7 @@ function InstanceDeleteForm({ id }) {
             if (resp.status == 200) {
                 alert('instance deleted')
                 console.log(resp.status)
+                setAkn(true)
                 setInstanceDelete({ _id: '' })
             }
         }

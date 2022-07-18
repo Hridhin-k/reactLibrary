@@ -15,14 +15,21 @@ function Author() {
     const [showUpdateForm, setShowUpdateForm] = useState(false);
     const [id, setId] = useState('');
     const [type, setType] = useState(null)
+    const [acknowledgement, setAcknowledgement] = useState(null)
+
     const navigate = useNavigate();
+    const pull_data = (data) => {
+        setAcknowledgement(data)
+
+    }
+    console.log('aknowladgment', acknowledgement)
     useEffect(() => {
         if (localStorage.getItem('type'))
             setType(localStorage.getItem('type'))
         else
             setType('user')
         getAuthor();
-    }, []);
+    }, [acknowledgement]);
     function getAuthor() {
         getAuthors('/authors').then(res => {
             if (res.status == 200) {
@@ -73,7 +80,7 @@ function Author() {
             </table><br />
 
 
-            {type === 'admin' ? <button className='authorbt' onClick={() => { setShowCreateForm(true) }}>ADD NEW AUTHOR</button> : ''}
+            {type === 'admin' ? <button className='authorbt' onClick={() => { setShowCreateForm(true) }}>ADD AUTHOR</button> : ''}
 
 
 
@@ -83,10 +90,13 @@ function Author() {
 
 
 
-            {showCreateForm && <AuthorCreateForm />}
+            {showCreateForm && <AuthorCreateForm func={pull_data} />}
 
-            {showUpdateForm && <AuthorEditForm id={id} />}
-            {showDeleteForm && <AuthorDeleteForm id={id} />}
+            {showUpdateForm && <AuthorEditForm id={id} func={pull_data} />}
+            {showDeleteForm && <AuthorDeleteForm id={id} func={pull_data} />}
+
+
+
         </div >
 
     )

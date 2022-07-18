@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react'
 import { createInstance } from '../../api/bookInstance'
-function InstanceCreateForm() {
+function InstanceCreateForm(props) {
     const [addInstance, setAddInstance] = useState({ book: '', imprint: '', status: '', due_back: '' })
-
+    const [akn, setAkn] = useState(null)
+    props.func(akn)
     const onInputChange = (e) => {
         const { name, value } = e.target
         setAddInstance(prevInput => { return { ...addInstance, [name]: value } })
@@ -16,6 +17,7 @@ function InstanceCreateForm() {
                 alert('data inserted')
                 console.log(resp.status)
                 console.log(addInstance)
+                setAkn(true)
                 setAddInstance({ book: '', imprint: '', status: '', due_back: '' })// RESET FORM AFTER SENDING DATA
             }
         }
@@ -38,7 +40,15 @@ function InstanceCreateForm() {
 
                         <label className='labelcontrol'>STATUS</label>
 
-                        <input type="text" name='status' onChange={onInputChange} className='inputcontrol' placeholder='status of the book' required /><br /><br />
+                        <select name='status' onChange={onInputChange}>
+                            <option value="available">available</option>
+                            <option value="maintenance">maintenance</option>
+                            <option value="loaned">loaned</option>
+                            <option value="reserved">reserved</option>
+
+                        </select><br /><br />
+
+
 
 
                         <label className='labelcontrol'>DUEBACK</label>
