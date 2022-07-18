@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { createGenre } from '../../api/genre'
 function GenreCreateForm(props) {
     const [addGenre, setAddGenre] = useState({ name: '' })
-    const [akn, setAkn] = useState(null)
-    props.func(akn)
+    const [acknowledgement, setAcknowledgement] = useState(null)
+    props.func(acknowledgement)
     const onInputChange = (e) => {
         const { name, value } = e.target
         setAddGenre(prevInput => { return { ...addGenre, [name]: value } })
@@ -17,7 +17,7 @@ function GenreCreateForm(props) {
                 console.log(resp.status)
                 alert('data inserted')
                 console.log(addGenre)
-                setAkn(true)
+                setAcknowledgement(true)
                 setAddGenre({ name: '' })
             }
         }

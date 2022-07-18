@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { updateBook } from '../../api/book'
 function Bookeditform(props) {
     const [book, setBook] = useState({ _id: props.id, title: '', author: '', summary: '', isbn: '', genre: '' })
-    const [akn, setAkn] = useState(null)
-    props.func(akn)
+    const [acknowledgement, setAcknowledgement] = useState(null)
+    props.func(acknowledgement)
     const onInputChange = (e) => {
         const { name, value } = e.target
         setBook(prevInput => { return { ...book, [name]: value } })
@@ -16,7 +16,7 @@ function Bookeditform(props) {
             if (resp.status == 200) {
                 console.log(resp.status)
                 alert('BOOK UPDATED SUCCESSFULLY')
-                setAkn(true)
+                setAcknowledgement(true)
                 setBook({ _id: '', title: '', author: '', summary: '', isbn: '', genre: '' })
             }
         }

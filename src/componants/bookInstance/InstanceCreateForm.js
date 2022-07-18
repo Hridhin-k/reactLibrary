@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { createInstance } from '../../api/bookInstance'
 function InstanceCreateForm(props) {
     const [addInstance, setAddInstance] = useState({ book: '', imprint: '', status: '', due_back: '' })
-    const [akn, setAkn] = useState(null)
-    props.func(akn)
+    const [acknowledgement, setAcknowledgement] = useState(null)
+    props.func(acknowledgement)
     const onInputChange = (e) => {
         const { name, value } = e.target
         setAddInstance(prevInput => { return { ...addInstance, [name]: value } })
@@ -17,7 +17,7 @@ function InstanceCreateForm(props) {
                 alert('data inserted')
                 console.log(resp.status)
                 console.log(addInstance)
-                setAkn(true)
+                setAcknowledgement(true)
                 setAddInstance({ book: '', imprint: '', status: '', due_back: '' })// RESET FORM AFTER SENDING DATA
             }
         }

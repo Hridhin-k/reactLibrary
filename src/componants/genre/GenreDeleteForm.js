@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { deleteGenre } from '../../api/genre';
 function GenreDeleteForm(props) {
     const [genreDelete, setGenreDelete] = useState({ _id: props.id })
-    const [akn, setAkn] = useState(null)
-    props.func(akn)
+    const [acknowledgement, setAcknowledgement] = useState(null)
+    props.func(acknowledgement)
     function oninputform(e) {
         const { name, value } = e.target;
         setGenreDelete(preInput => { return ({ ...genreDelete, [name]: value }) })
@@ -17,7 +17,7 @@ function GenreDeleteForm(props) {
                 console.log(genreDelete)
                 console.log(resp.status)
                 alert('genre deleted')
-                setAkn(true)
+                setAcknowledgement(true)
                 setGenreDelete({ _id: '' })
             }
         }

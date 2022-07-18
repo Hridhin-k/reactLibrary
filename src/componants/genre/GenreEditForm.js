@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { updateGenre } from '../../api/genre'
 function GenreEditForm(props) {
     const [addGenre, setAddGenre] = useState({ _id: props.id, name: '' })
-    const [akn, setAkn] = useState(null)
-    props.func(akn)
+    const [acknowledgement, setAcknowledgement] = useState(null)
+    props.func(acknowledgement)
     const onInputChange = (e) => {
         const { name, value } = e.target
         setAddGenre(prevInput => { return { ...addGenre, [name]: value } })
@@ -16,7 +16,7 @@ function GenreEditForm(props) {
             if (resp.status == 200) {
                 alert('DATA UPDATED SUCCESSFULLY')
                 console.log(resp.status)
-                setAkn(true)
+                setAcknowledgement(true)
                 setAddGenre({ _id: '', name: '' })
             }
         }

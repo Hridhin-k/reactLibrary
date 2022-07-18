@@ -4,8 +4,8 @@ import { deleteInstance } from '../../api/bookInstance';
 function InstanceDeleteForm(props) {
 
     const [instanceDelete, setInstanceDelete] = useState({ _id: props.id })
-    const [akn, setAkn] = useState(null)
-    props.func(akn)
+    const [acknowledgement, setAcknowledgement] = useState(null)
+    props.func(acknowledgement)
     function onInputForm(e) {
         const { name, value } = e.target;
         setInstanceDelete(preInput => { return { ...instanceDelete, [name]: value } })
@@ -18,7 +18,7 @@ function InstanceDeleteForm(props) {
             if (resp.status == 200) {
                 alert('instance deleted')
                 console.log(resp.status)
-                setAkn(true)
+                setAcknowledgement(true)
                 setInstanceDelete({ _id: '' })
             }
         }

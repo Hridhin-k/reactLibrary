@@ -4,9 +4,9 @@ import { createBook } from '../../api/book'
 
 
 function BookCreateForm(props) {
-    const [akn, setAkn] = useState(null)
+    const [acknowledgement, setAcknowledgement] = useState(null)
     const [addBook, setAddBook] = useState({ title: '', author: '', summary: '', isbn: '', genre: '' })
-    props.func(akn)
+    props.func(acknowledgement)
     const onInputChange = (e) => {
         const { name, value } = e.target
         setAddBook(prevInput => { return { ...addBook, [name]: value } })
@@ -19,7 +19,7 @@ function BookCreateForm(props) {
                 console.log(resp.status)
                 alert('data inserted')
                 console.log(addBook)
-                setAkn(true)
+                setAcknowledgement(true)
                 setAddBook({ title: '', author: '', summary: '', isbn: '', genre: '' })
             }
         }

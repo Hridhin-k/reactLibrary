@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 
 import { updateInstance } from '../../api/bookInstance'
 function InstanceEditForm(props) {
-    const [akn, setAkn] = useState(null)
+    const [acknowledgement, setAcknowledgement] = useState(null)
     const [addInstance, setAddInstance] = useState({ _id: props.id, book: '', imprint: '', status: '', due_back: '' })
-    props.func(akn)
+    props.func(acknowledgement)
     const onInputChange = (e) => {
         const { name, value } = e.target
 
@@ -18,7 +18,7 @@ function InstanceEditForm(props) {
                 console.log(resp.status)
                 alert('data updated')
                 console.log(addInstance)
-                setAkn(true)
+                setAcknowledgement(true)
                 setAddInstance({ _id: '', book: '', imprint: '', status: '', dueback: '' })// resetting form after sending data
             }
         }
